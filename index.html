@@ -1,0 +1,1079 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>body{margin:0}</style>
+</head>
+<body>
+<title>Шпаргалка по английскому</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;700&family=Golos+Text:wght@400;500;600;700&display=swap">
+<style>
+/* Layout: workbook — overview 3×3 grid, then one section per aspect with three tense cards (past / present / future) */
+:root{
+  --bg:#f3f5f9; --paper:#ffffff; --ink:#18203a; --muted:#5a6380; --line:#dde2ec;
+  --accent:#2948c7; --accent-soft:#e6ebfb;
+  --c-subj:#1f6fd1; --c-aux:#c2410c; --c-verb:#15803d; --c-not:#be123c;
+  --c-subj-bg:#e3eefc; --c-aux-bg:#fdeee4; --c-verb-bg:#e2f5e8; --c-not-bg:#fde6ec;
+  --f-display:"Unbounded", "Segoe UI", system-ui, sans-serif;
+  --f-body:"Golos Text", "Segoe UI", system-ui, -apple-system, sans-serif;
+}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){
+  --bg:#0f1322; --paper:#171c2f; --ink:#e7eaf5; --muted:#9aa3c0; --line:#2a3150;
+  --accent:#8ea5ff; --accent-soft:#222b4d;
+  --c-subj:#7cb4ff; --c-aux:#ffa66b; --c-verb:#6fdc96; --c-not:#ff8aa5;
+  --c-subj-bg:#1b2a47; --c-aux-bg:#3a2518; --c-verb-bg:#16331f; --c-not-bg:#3b1b26;
+  color-scheme:dark }}
+:root[data-theme="dark"]{
+  --bg:#0f1322; --paper:#171c2f; --ink:#e7eaf5; --muted:#9aa3c0; --line:#2a3150;
+  --accent:#8ea5ff; --accent-soft:#222b4d;
+  --c-subj:#7cb4ff; --c-aux:#ffa66b; --c-verb:#6fdc96; --c-not:#ff8aa5;
+  --c-subj-bg:#1b2a47; --c-aux-bg:#3a2518; --c-verb-bg:#16331f; --c-not-bg:#3b1b26;
+  color-scheme:dark }
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}}
+body{background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:16px;line-height:1.5}
+.wrap{max-width:1180px;margin:0 auto;padding-block:32px 64px;
+  padding-left:max(16px, env(safe-area-inset-left, 0px));padding-right:max(16px, env(safe-area-inset-right, 0px));
+  display:flex;flex-direction:column;gap:40px}
+h1,h2,h3{font-family:var(--f-display);text-wrap:balance;margin:0;line-height:1.15}
+h1{font-size:clamp(26px,4.4vw,40px);font-weight:700}
+h2{font-size:clamp(20px,2.6vw,26px);font-weight:700}
+h3{font-size:17px;font-weight:500}
+p{margin:0}
+.lead{color:var(--muted);max-width:62ch;font-size:17px}
+header{display:flex;flex-direction:column;gap:14px}
+
+/* colour tokens for sentence parts */
+.s{color:var(--c-subj);font-weight:600}
+.a{color:var(--c-aux);font-weight:700}
+.v{color:var(--c-verb);font-weight:700}
+.n{color:var(--c-not);font-weight:700}
+.legend{display:flex;flex-wrap:wrap;gap:8px}
+.chip{font-size:14px;padding:4px 10px;border-radius:999px;font-weight:600}
+.chip.s{background:var(--c-subj-bg)} .chip.a{background:var(--c-aux-bg)}
+.chip.v{background:var(--c-verb-bg)} .chip.n{background:var(--c-not-bg)}
+
+/* overview grid */
+.overview{overflow-x:auto}
+.grid{display:grid;grid-template-columns:120px repeat(3,minmax(170px,1fr));gap:6px;min-width:640px}
+.grid .hd{font-family:var(--f-display);font-size:13px;font-weight:500;color:var(--muted);letter-spacing:.06em;text-transform:uppercase;padding:8px 10px;display:flex;align-items:flex-end}
+.grid .rowhd{align-items:center}
+.cell{background:var(--paper);border:1px solid var(--line);border-radius:10px;padding:12px 14px;text-decoration:none;color:inherit;display:flex;flex-direction:column;gap:4px}
+.cell:hover{border-color:var(--accent)}
+.cell:focus-visible,.toc a:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.cell b{font-family:var(--f-display);font-weight:500;font-size:14px;color:var(--accent)}
+.cell span{font-size:15px}
+
+/* aspect sections */
+section.aspect{display:flex;flex-direction:column;gap:16px}
+.aspect-head{display:flex;flex-direction:column;gap:6px}
+.aspect-head p{color:var(--muted);max-width:70ch}
+.cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+@media (max-width:980px){.cards{grid-template-columns:1fr}}
+.card{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:20px;display:flex;flex-direction:column;gap:14px;min-width:0;scroll-margin-top:16px}
+.card-top{display:flex;justify-content:space-between;align-items:baseline;gap:10px;flex-wrap:wrap}
+.card-top h3{color:var(--accent)}
+.card-top .ru{color:var(--muted);font-size:14px}
+.formula{background:var(--accent-soft);border-radius:8px;padding:8px 12px;font-weight:600;font-size:15px}
+table.forms{width:100%;border-collapse:collapse;font-size:15px}
+table.forms th{width:34px;text-align:center;vertical-align:top;font-family:var(--f-display);font-size:16px;padding:8px 6px 8px 0;color:var(--muted)}
+table.forms td{padding:8px 0;border-top:1px solid var(--line);vertical-align:top}
+table.forms tr:first-child td{border-top:none}
+table.forms td small{display:block;color:var(--muted);font-size:13px;margin-top:2px}
+.meta{display:flex;flex-direction:column;gap:8px;font-size:14px}
+.meta .lbl{font-size:12px;letter-spacing:.07em;text-transform:uppercase;color:var(--muted);font-weight:600}
+.markers{display:flex;flex-wrap:wrap;gap:6px}
+.markers span{border:1px solid var(--line);border-radius:6px;padding:2px 8px;font-size:13px}
+.ex{border-left:3px solid var(--line);padding-left:10px}
+.ex i{color:var(--muted);font-style:normal;display:block;font-size:13px}
+
+/* reference blocks */
+.ref{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+@media (max-width:820px){.ref{grid-template-columns:1fr}}
+.box{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:20px;display:flex;flex-direction:column;gap:12px;min-width:0}
+.box ul{margin:0;padding-left:18px;display:flex;flex-direction:column;gap:6px}
+.tbl-scroll{overflow-x:auto}
+table.irr{border-collapse:collapse;width:100%;font-size:15px;font-variant-numeric:tabular-nums}
+table.irr th{text-align:left;font-size:12px;letter-spacing:.07em;text-transform:uppercase;color:var(--muted);padding:6px 8px;border-bottom:1px solid var(--line)}
+table.irr td{padding:6px 8px;border-bottom:1px solid var(--line)}
+table.irr td:last-child{color:var(--muted)}
+.wh{font-size:15px;display:flex;flex-direction:column;gap:8px}
+.note{font-size:14px;color:var(--muted)}
+.ref{grid-template-columns:repeat(3,minmax(0,1fr))}
+@media (max-width:980px){.ref{grid-template-columns:1fr}}
+
+/* navigation */
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top, 0px);z-index:10;background:var(--bg)}
+.topbar{position:sticky;top:env(safe-area-inset-top, 0px);z-index:9;background:color-mix(in srgb, var(--bg) 92%, transparent);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.topbar-in{max-width:1180px;margin:0 auto;padding-block:10px;
+  padding-left:max(16px, env(safe-area-inset-left, 0px));padding-right:max(16px, env(safe-area-inset-right, 0px))}
+.toc{display:flex;gap:8px;overflow-x:auto;scrollbar-width:none}
+.toc::-webkit-scrollbar{display:none}
+.toc a{flex:none;font-size:14px;font-weight:600;color:var(--accent);text-decoration:none;background:var(--paper);border:1px solid var(--line);border-radius:999px;padding:6px 14px;transition:background .15s,color .15s}
+.toc a:hover{border-color:var(--accent)}
+.toc a[aria-current="true"]{background:var(--accent);border-color:var(--accent);color:var(--paper)}
+section[id],.card{scroll-margin-top:calc(72px + env(safe-area-inset-top, 0px))}
+
+/* two-column info layout */
+.duo{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+@media (max-width:820px){.duo{grid-template-columns:1fr}}
+.wide{grid-column:1 / -1}
+table.ref-t{border-collapse:collapse;width:100%;font-size:15px}
+table.ref-t th{text-align:left;font-size:12px;letter-spacing:.07em;text-transform:uppercase;color:var(--muted);padding:6px 8px;border-bottom:1px solid var(--line);font-weight:600}
+table.ref-t td{padding:8px;border-bottom:1px solid var(--line);vertical-align:top}
+table.ref-t td:first-child{font-weight:700;white-space:nowrap}
+table.ref-t td .tr{color:var(--muted);display:block;font-size:13px}
+.art{color:var(--c-aux);font-weight:700}
+.big-art{font-family:var(--f-display);font-size:28px;font-weight:700;color:var(--c-aux);line-height:1}
+.box-head{display:flex;align-items:center;gap:14px}
+.box-head p{color:var(--muted);font-size:14px}
+.compare{display:flex;flex-direction:column;gap:8px;font-size:15px}
+.compare .row{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:10px}
+@media (max-width:520px){.compare .row{grid-template-columns:1fr}}
+.bad,.good{border-radius:8px;padding:8px 12px}
+.bad{background:var(--c-not-bg)} .bad::before{content:"✗ ";color:var(--c-not);font-weight:700}
+.good{background:var(--c-verb-bg)} .good::before{content:"✓ ";color:var(--c-verb);font-weight:700}
+.bad s{text-decoration-color:var(--c-not)}
+.pairs{display:flex;flex-wrap:wrap;gap:6px}
+.pairs span{border:1px solid var(--line);border-radius:6px;padding:3px 9px;font-size:14px}
+
+/* sentence builder */
+.kicker{font-size:12px;letter-spacing:.07em;text-transform:uppercase;color:var(--muted);font-weight:600}
+.flow{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}
+@media (max-width:900px){.flow{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:520px){.flow{grid-template-columns:1fr}}
+.flow-step{background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:14px;display:flex;flex-direction:column;gap:4px;font-size:14px;min-width:0}
+.flow-step b{font-family:var(--f-display);font-weight:500;color:var(--accent);font-size:15px}
+.flow-step p{color:var(--muted)}
+.builder{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);gap:16px;align-items:start}
+@media (max-width:900px){.builder{grid-template-columns:1fr}}
+.controls{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:20px;display:flex;flex-direction:column;gap:20px;min-width:0}
+.step{border:0;margin:0;padding:0;min-width:0;display:flex;flex-direction:column;gap:8px}
+.step legend{font-family:var(--f-display);font-weight:500;font-size:15px;padding:0;margin-bottom:8px;display:flex;align-items:center;gap:8px}
+.num{display:inline-grid;place-items:center;width:24px;height:24px;border-radius:50%;background:var(--accent-soft);color:var(--accent);font-size:13px;font-weight:700}
+.opts{display:flex;flex-wrap:wrap;gap:6px}
+.opt{position:relative;display:flex}
+.opt input{position:absolute;inset:0;opacity:0;margin:0;cursor:pointer}
+.opt span{display:flex;flex-direction:column;gap:2px;border:1px solid var(--line);border-radius:10px;padding:7px 12px;font-size:15px;font-weight:600;background:var(--bg);cursor:pointer;width:100%}
+.opt small{font-weight:400;font-size:12px;color:var(--muted);line-height:1.3}
+.opt input:checked + span{background:var(--accent);border-color:var(--accent);color:var(--paper)}
+.opt input:checked + span small{color:var(--paper)}
+.opt input:focus-visible + span{outline:2px solid var(--accent);outline-offset:2px}
+.opts.wide-opts .opt{flex:1 1 140px}
+.sub-opts{padding:10px;border-radius:10px;background:var(--accent-soft)}
+.field{display:flex;flex-direction:column;gap:6px}
+.field label{font-size:13px;color:var(--muted)}
+.controls select,.controls input[type="text"]{font:inherit;font-size:15px;color:var(--ink);background:var(--bg);border:1px solid var(--line);border-radius:10px;padding:9px 12px;width:100%}
+.controls select:focus-visible,.controls input[type="text"]:focus-visible{outline:2px solid var(--accent);outline-offset:1px}
+.result{position:sticky;top:calc(72px + env(safe-area-inset-top, 0px));background:var(--paper);border:2px solid var(--accent);border-radius:14px;padding:20px;display:flex;flex-direction:column;gap:14px;min-width:0}
+@media (max-width:900px){.result{position:static}}
+.sentence{font-size:clamp(22px,3vw,30px);font-weight:600;line-height:1.3;overflow-wrap:anywhere;margin:0}
+.sentence .w{color:var(--ink);font-weight:800;text-decoration:underline;text-decoration-thickness:2px;text-underline-offset:4px}
+.sentence .x{color:var(--ink);font-weight:500}
+.rules{margin:0;padding-left:18px;display:flex;flex-direction:column;gap:6px;font-size:14px}
+.r-extra{font-size:15px;display:flex;flex-direction:column;gap:4px}
+.more{color:var(--accent);font-weight:600;text-decoration:none;font-size:15px}
+.more:hover{text-decoration:underline}
+.warn{color:var(--c-not);font-size:15px}
+
+/* a / an */
+#a-an{scroll-margin-top:calc(72px + env(safe-area-inset-top, 0px))}
+#a-an > h3:not(:first-child){margin-top:10px}
+.aan{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+@media (max-width:620px){.aan{grid-template-columns:1fr}}
+.aan-col{background:var(--bg);border-radius:12px;padding:16px;display:flex;flex-direction:column;gap:10px;min-width:0}
+.quiz{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));column-gap:28px}
+@media (max-width:760px){.quiz{grid-template-columns:1fr}}
+.q-row{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;gap:6px 10px;padding:10px 0;border-top:1px solid var(--line)}
+.q-word{font-weight:600;font-size:16px}
+.q-word .q-gap{display:inline-block;min-width:2.2em;border-bottom:2px solid var(--line);text-align:center;color:var(--c-aux);margin-right:6px}
+.q-btns{display:flex;gap:6px}
+.q-btns button,.q-reset{font:inherit;font-weight:700;font-size:15px;min-width:48px;padding:6px 12px;border-radius:8px;border:1px solid var(--line);background:var(--bg);color:var(--ink);cursor:pointer}
+.q-btns button:hover:not(:disabled),.q-reset:hover{border-color:var(--accent)}
+.q-btns button:focus-visible,.q-reset:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.q-btns button:disabled{cursor:default}
+.q-btns button.ok{background:var(--c-verb-bg);border-color:var(--c-verb);color:var(--c-verb)}
+.q-btns button.bad-pick{background:var(--c-not-bg);border-color:var(--c-not);color:var(--c-not)}
+.q-fb{grid-column:1 / -1;font-size:13px;color:var(--muted)}
+.q-fb.ok{color:var(--c-verb)} .q-fb.no{color:var(--c-not)}
+.quiz-foot{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;padding-top:10px;border-top:1px solid var(--line);font-weight:600}
+</style>
+
+<nav class="topbar" aria-label="Разделы">
+  <div class="topbar-in">
+    <div class="toc">
+      <a href="#builder">Конструктор</a>
+      <a href="#tenses">Времена</a>
+      <a href="#questions">Вопросы со словом</a>
+      <a href="#articles">Артикли</a>
+      <a href="#verbs">Формы глагола</a>
+    </div>
+  </div>
+</nav>
+
+<div class="wrap">
+<header>
+  <h1>Как строить предложения в английском</h1>
+  <p class="lead">9 основных времён, вопросы со словом и артикли. Для каждого времени: схема, утверждение, отрицание, вопрос, краткий ответ, слова-подсказки и пример. Части предложения выделены цветом, чтобы был виден порядок слов.</p>
+  <div class="legend">
+    <span class="chip s">подлежащее (кто?)</span>
+    <span class="chip a">вспомогательный глагол</span>
+    <span class="chip v">смысловой глагол</span>
+    <span class="chip n">not / отрицание</span>
+  </div>
+</header>
+
+<section class="aspect" id="builder">
+  <div class="aspect-head">
+    <h2>Конструктор предложений</h2>
+    <p>Выберите по шагам, что хотите сказать, и получите готовое предложение со схемой. Любой шаг можно поменять, и предложение сразу перестроится.</p>
+  </div>
+
+  <div class="flow" aria-label="Как выбрать время">
+    <div class="flow-step"><span class="kicker">Шаг 1 · Когда?</span><b>Прошлое, сейчас или будущее</b><p>Выбирает Past, Present или Future.</p></div>
+    <div class="flow-step"><span class="kicker">Шаг 2 · Идёт процесс?</span><b>Да → Continuous</b><p>Действие идёт в конкретный момент: now, at 5 pm yesterday, this time tomorrow.</p></div>
+    <div class="flow-step"><span class="kicker">Шаг 2 · Важен результат?</span><b>Да → Perfect</b><p>Уже сделано к какому-то моменту: already, just, by Monday, before.</p></div>
+    <div class="flow-step"><span class="kicker">Шаг 2 · Ни то ни другое</span><b>Simple</b><p>Факт, привычка, расписание или просто событие: every day, yesterday, tomorrow.</p></div>
+  </div>
+
+  <div class="builder">
+    <form class="controls" id="b-form" autocomplete="off">
+      <fieldset class="step"><legend><span class="num">1</span>Когда это происходит?</legend><div class="opts wide-opts" id="g-time"></div></fieldset>
+      <fieldset class="step"><legend><span class="num">2</span>Что важно в действии?</legend><div class="opts wide-opts" id="g-aspect"></div></fieldset>
+      <fieldset class="step"><legend><span class="num">3</span>Какое предложение?</legend><div class="opts wide-opts" id="g-type"></div>
+        <div class="opts sub-opts" id="g-wh" hidden></div></fieldset>
+      <fieldset class="step"><legend><span class="num">4</span>Кто делает?</legend><div class="opts" id="g-subj"></div></fieldset>
+      <fieldset class="step"><legend><span class="num">5</span>Какое действие?</legend>
+        <div class="field"><label for="b-verb">Глагол</label><select id="b-verb"></select></div>
+        <div class="field" id="custom-wrap" hidden><label for="b-custom">Свой правильный глагол (латиницей)</label><input type="text" id="b-custom" placeholder="например: visit, clean, stop" spellcheck="false"></div>
+        <div class="field"><label for="b-rest">Что ещё добавить (необязательно)</label><input type="text" id="b-rest" value="in a bank" placeholder="например: in a bank, every day, now" spellcheck="false">
+          <p class="note" id="rest-hint" hidden>В вопросе со словом не пишите то, о чём спрашиваете: Where do you work? (без in a bank).</p></div>
+      </fieldset>
+    </form>
+
+    <div class="result" aria-live="polite">
+      <span class="kicker" id="r-name">Present Simple · вопрос</span>
+      <p class="sentence" id="r-sent"><span class="a">Does</span> <span class="s">he</span> <span class="v">work</span> <span class="x">in a bank?</span></p>
+      <div class="formula" id="r-formula">Does + S + V1 + …?</div>
+      <div class="r-extra" id="r-extra"></div>
+      <div class="meta"><span class="lbl">Почему так</span><ul class="rules" id="r-rules"></ul></div>
+      <a class="more" id="r-link" href="#present-simple">Подробнее про Present Simple →</a>
+    </div>
+  </div>
+</section>
+
+<section class="overview" id="tenses" aria-label="Обзор времён">
+  <div class="grid">
+    <div class="hd"></div>
+    <div class="hd">Past · прошлое</div>
+    <div class="hd">Present · настоящее</div>
+    <div class="hd">Future · будущее</div>
+
+    <div class="hd rowhd">Simple</div>
+    <a class="cell" href="#past-simple"><b>Past Simple</b><span><span class="s">I</span> <span class="v">worked</span></span></a>
+    <a class="cell" href="#present-simple"><b>Present Simple</b><span><span class="s">I</span> <span class="v">work</span></span></a>
+    <a class="cell" href="#future-simple"><b>Future Simple</b><span><span class="s">I</span> <span class="a">will</span> <span class="v">work</span></span></a>
+
+    <div class="hd rowhd">Continuous</div>
+    <a class="cell" href="#past-continuous"><b>Past Continuous</b><span><span class="s">I</span> <span class="a">was</span> <span class="v">working</span></span></a>
+    <a class="cell" href="#present-continuous"><b>Present Continuous</b><span><span class="s">I</span> <span class="a">am</span> <span class="v">working</span></span></a>
+    <a class="cell" href="#future-continuous"><b>Future Continuous</b><span><span class="s">I</span> <span class="a">will be</span> <span class="v">working</span></span></a>
+
+    <div class="hd rowhd">Perfect</div>
+    <a class="cell" href="#past-perfect"><b>Past Perfect</b><span><span class="s">I</span> <span class="a">had</span> <span class="v">worked</span></span></a>
+    <a class="cell" href="#present-perfect"><b>Present Perfect</b><span><span class="s">I</span> <span class="a">have</span> <span class="v">worked</span></span></a>
+    <a class="cell" href="#future-perfect"><b>Future Perfect</b><span><span class="s">I</span> <span class="a">will have</span> <span class="v">worked</span></span></a>
+  </div>
+</section>
+
+<!-- SIMPLE -->
+<section class="aspect">
+  <div class="aspect-head">
+    <h2>Simple — простые</h2>
+    <p>Факт, привычка, регулярное или однократное действие. Не важно, как долго оно длится.</p>
+  </div>
+  <div class="cards">
+    <article class="card" id="past-simple">
+      <div class="card-top"><h3>Past Simple</h3><span class="ru">простое прошедшее</span></div>
+      <div class="formula"><span class="s">S</span> + <span class="v">V2</span> (V+ed или 2-я форма)</div>
+      <table class="forms">
+        <tr><th>+</th><td><span class="s">I / He / They</span> <span class="v">worked</span>.<br><span class="s">She</span> <span class="v">went</span> home.</td></tr>
+        <tr><th>−</th><td><span class="s">I</span> <span class="a">did</span> <span class="n">not</span> (<span class="a">didn't</span>) <span class="v">work</span>.<small>после did глагол в начальной форме: didn't go, не didn't went</small></td></tr>
+        <tr><th>?</th><td><span class="a">Did</span> <span class="s">you</span> <span class="v">work</span>?</td></tr>
+        <tr><th>✓</th><td>Yes, I <span class="a">did</span>. / No, I <span class="a">didn't</span>.</td></tr>
+      </table>
+      <div class="meta"><span class="lbl">Слова-подсказки</span>
+        <div class="markers"><span>yesterday</span><span>last week</span><span>2 days ago</span><span>in 2020</span><span>when I was a child</span></div></div>
+      <p class="ex">I <b>visited</b> London last year.<i>Я был в Лондоне в прошлом году.</i></p>
+    </article>
+
+    <article class="card" id="present-simple">
+      <div class="card-top"><h3>Present Simple</h3><span class="ru">простое настоящее</span></div>
+      <div class="formula"><span class="s">S</span> + <span class="v">V1</span> (he/she/it → <span class="v">V+s</span>)</div>
+      <table class="forms">
+        <tr><th>+</th><td><span class="s">I / You / We / They</span> <span class="v">work</span>.<br><span class="s">He / She / It</span> <span class="v">works</span>.</td></tr>
+        <tr><th>−</th><td><span class="s">I</span> <span class="a">do</span> <span class="n">not</span> (<span class="a">don't</span>) <span class="v">work</span>.<br><span class="s">He</span> <span class="a">does</span> <span class="n">not</span> (<span class="a">doesn't</span>) <span class="v">work</span>.<small>-s уходит в does: doesn't work, не doesn't works</small></td></tr>
+        <tr><th>?</th><td><span class="a">Do</span> <span class="s">you</span> <span class="v">work</span>?<br><span class="a">Does</span> <span class="s">he</span> <span class="v">work</span>?</td></tr>
+        <tr><th>✓</th><td>Yes, I <span class="a">do</span>. / No, he <span class="a">doesn't</span>.</td></tr>
+      </table>
+      <div class="meta"><span class="lbl">Слова-подсказки</span>
+        <div class="markers"><span>always</span><span>usually</span><span>often</span><span>sometimes</span><span>never</span><span>every day</span><span>on Mondays</span></div></div>
+      <p class="ex">She <b>works</b> in a bank.<i>Она работает в банке.</i></p>
+    </article>
+
+    <article class="card" id="future-simple">
+      <div class="card-top"><h3>Future Simple</h3><span class="ru">простое будущее</span></div>
+      <div class="formula"><span class="s">S</span> + <span class="a">will</span> + <span class="v">V1</span></div>
+      <table class="forms">
+        <tr><th>+</th><td><span class="s">I / He / They</span> <span class="a">will</span> (<span class="a">'ll</span>) <span class="v">work</span>.</td></tr>
+        <tr><th>−</th><td><span class="s">I</span> <span class="a">will</span> <span class="n">not</span> (<span class="a">won't</span>) <span class="v">work</span>.</td></tr>
+        <tr><th>?</th><td><span class="a">Will</span> <span class="s">you</span> <span class="v">work</span>?</td></tr>
+        <tr><th>✓</th><td>Yes, I <span class="a">will</span>. / No, I <span class="a">won't</span>.</td></tr>
+      </table>
+      <div class="meta"><span class="lbl">Слова-подсказки</span>
+        <div class="markers"><span>tomorrow</span><span>next week</span><span>soon</span><span>in 2 days</span><span>I think…</span><span>probably</span></div></div>
+      <p class="ex">I <b>will call</b> you tomorrow.<i>Я позвоню тебе завтра.</i></p>
+    </article>
+  </div>
+</section>
+
+<!-- CONTINUOUS -->
+<section class="aspect">
+  <div class="aspect-head">
+    <h2>Continuous — длительные</h2>
+    <p>Процесс: действие идёт в конкретный момент. Всегда <b>be</b> в нужной форме + глагол с <b>-ing</b>.</p>
+  </div>
+  <div class="cards">
+    <article class="card" id="past-continuous">
+      <div class="card-top"><h3>Past Continuous</h3><span class="ru">длительное прошедшее</span></div>
+      <div class="formula"><span class="s">S</span> + <span class="a">was / were</span> + <span class="v">V-ing</span></div>
+      <table class="forms">
+        <tr><th>+</th><td><span class="s">I / He / She / It</span> <span class="a">was</span> <span class="v">working</span>.<br><span class="s">You / We / They</span> <span class="a">were</span> <span class="v">working</span>.</td></tr>
+        <tr><th>−</th><td><span class="s">He</span> <span class="a">was</span> <span class="n">not</span> (<span class="a">wasn't</span>) <span class="v">working</span>.<br><span class="s">They</span> <span class="a">weren't</span> <span class="v">working</span>.</td></tr>
+        <tr><th>?</th><td><span class="a">Was</span> <span class="s">he</span> <span class="v">working</span>?<br><span class="a">Were</span> <span class="s">you</span> <span class="v">working</span>?</td></tr>
+        <tr><th>✓</th><td>Yes, he <span class="a">was</span>. / No, we <span class="a">weren't</span>.</td></tr>
+      </table>
+      <div class="meta"><span class="lbl">Слова-подсказки</span>
+        <div class="markers"><span>at 5 pm yesterday</span><span>all evening</span><span>when…</span><span>while…</span></div></div>
+      <p class="ex">I <b>was sleeping</b> when you called.<i>Я спал, когда ты позвонил.</i></p>
+    </article>
+
+    <article class="card" id="present-continuous">
+      <div class="card-top"><h3>Present Continuous</h3><span class="ru">длительное настоящее</span></div>
+      <div class="formula"><span class="s">S</span> + <span class="a">am / is / are</span> + <span class="v">V-ing</span></div>
+      <table class="forms">
+        <tr><th>+</th><td><span class="s">I</span> <span class="a">am</span> (<span class="a">'m</span>) <span class="v">working</span>.<br><span class="s">He / She / It</span> <span class="a">is</span> <span class="v">working</span>.<br><span class="s">You / We / They</span> <span class="a">are</span> <span class="v">working</span>.</td></tr>
+        <tr><th>−</th><td><span class="s">I</span> <span class="a">am</span> <span class="n">not</span> <span class="v">working</span>.<br><span class="s">He</span> <span class="a">isn't</span> / <span class="s">They</span> <span class="a">aren't</span> <span class="v">working</span>.</td></tr>
+        <tr><th>?</th><td><span class="a">Are</span> <span class="s">you</span> <span class="v">working</span>?<br><span class="a">Is</span> <span class="s">she</span> <span class="v">working</span>?</td></tr>
+        <tr><th>✓</th><td>Yes, I <span class="a">am</span>. / No, she <span class="a">isn't</span>.</td></tr>
+      </table>
+      <div class="meta"><span class="lbl">Слова-подсказки</span>
+        <div class="markers"><span>now</span><span>right now</span><span>at the moment</span><span>today</span><span>Look!</span><span>Listen!</span></div></div>
+      <p class="ex">They <b>are watching</b> TV now.<i>Они сейчас смотрят телевизор.</i></p>
+    </article>
+
+    <article class="card" id="future-continuous">
+      <div class="card-top"><h3>Future Continuous</h3><span class="ru">длительное будущее</span></div>
+      <div class="formula"><span class="s">S</span> + <span class="a">will be</span> + <span class="v">V-ing</span></div>
+      <table class="forms">
+        <tr><th>+</th><td><span class="s">I / He / They</span> <span class="a">will be</span> <span class="v">working</span>.</td></tr>
+        <tr><th>−</th><td><span class="s">I</span> <span class="a">won't be</span> <span class="v">working</span>.</td></tr>
+        <tr><th>?</th><td><span class="a">Will</span> <span class="s">you</span> <span class="a">be</span> <span class="v">working</span>?</td></tr>
+        <tr><th>✓</th><td>Yes, I <span class="a">will</span>. / No, I <span class="a">won't</span>.</td></tr>
+      </table>
+      <div class="meta"><span class="lbl">Слова-подсказки</span>
+        <div class="markers"><span>at this time tomorrow</span><span>at 8 pm tomorrow</span><span>all day tomorrow</span></div></div>
+      <p class="ex">This time tomorrow I <b>will be flying</b> to Rome.<i>Завтра в это время я буду лететь в Рим.</i></p>
+    </article>
+  </div>
+</section>
+
+<!-- PERFECT -->
+<section class="aspect">
+  <div class="aspect-head">
+    <h2>Perfect — совершённые</h2>
+    <p>Результат: действие завершилось к определённому моменту. Всегда <b>have</b> в нужной форме + <b>V3</b> (3-я форма глагола).</p>
+  </div>
+  <div class="cards">
+    <article class="card" id="past-perfect">
+      <div class="card-top"><h3>Past Perfect</h3><span class="ru">совершённое прошедшее</span></div>
+      <div class="formula"><span class="s">S</span> + <span class="a">had</span> + <span class="v">V3</span></div>
+      <table class="forms">
+        <tr><th>+</th><td><span class="s">I / He / They</span> <span class="a">had</span> (<span class="a">'d</span>) <span class="v">finished</span>.</td></tr>
+        <tr><th>−</th><td><span class="s">I</span> <span class="a">had</span> <span class="n">not</span> (<span class="a">hadn't</span>) <span class="v">finished</span>.</td></tr>
+        <tr><th>?</th><td><span class="a">Had</span> <span class="s">you</span> <span class="v">finished</span>?</td></tr>
+        <tr><th>✓</th><td>Yes, I <span class="a">had</span>. / No, I <span class="a">hadn't</span>.</td></tr>
+      </table>
+      <div class="meta"><span class="lbl">Слова-подсказки</span>
+        <div class="markers"><span>before</span><span>after</span><span>by the time</span><span>by 5 pm yesterday</span><span>already</span></div></div>
+      <p class="ex">The film <b>had started</b> before we came.<i>Фильм начался ещё до того, как мы пришли.</i></p>
+    </article>
+
+    <article class="card" id="present-perfect">
+      <div class="card-top"><h3>Present Perfect</h3><span class="ru">совершённое настоящее</span></div>
+      <div class="formula"><span class="s">S</span> + <span class="a">have / has</span> + <span class="v">V3</span></div>
+      <table class="forms">
+        <tr><th>+</th><td><span class="s">I / You / We / They</span> <span class="a">have</span> (<span class="a">'ve</span>) <span class="v">finished</span>.<br><span class="s">He / She / It</span> <span class="a">has</span> (<span class="a">'s</span>) <span class="v">finished</span>.</td></tr>
+        <tr><th>−</th><td><span class="s">I</span> <span class="a">haven't</span> <span class="v">finished</span>.<br><span class="s">She</span> <span class="a">hasn't</span> <span class="v">finished</span>.</td></tr>
+        <tr><th>?</th><td><span class="a">Have</span> <span class="s">you</span> <span class="v">finished</span>?<br><span class="a">Has</span> <span class="s">she</span> <span class="v">finished</span>?</td></tr>
+        <tr><th>✓</th><td>Yes, I <span class="a">have</span>. / No, she <span class="a">hasn't</span>.</td></tr>
+      </table>
+      <div class="meta"><span class="lbl">Слова-подсказки</span>
+        <div class="markers"><span>already</span><span>just</span><span>yet</span><span>ever</span><span>never</span><span>since 2020</span><span>for 3 years</span></div></div>
+      <p class="ex">I <b>have</b> already <b>done</b> my homework.<i>Я уже сделал домашнее задание (и оно готово).</i></p>
+    </article>
+
+    <article class="card" id="future-perfect">
+      <div class="card-top"><h3>Future Perfect</h3><span class="ru">совершённое будущее</span></div>
+      <div class="formula"><span class="s">S</span> + <span class="a">will have</span> + <span class="v">V3</span></div>
+      <table class="forms">
+        <tr><th>+</th><td><span class="s">I / He / They</span> <span class="a">will have</span> <span class="v">finished</span>.</td></tr>
+        <tr><th>−</th><td><span class="s">I</span> <span class="a">won't have</span> <span class="v">finished</span>.</td></tr>
+        <tr><th>?</th><td><span class="a">Will</span> <span class="s">you</span> <span class="a">have</span> <span class="v">finished</span>?</td></tr>
+        <tr><th>✓</th><td>Yes, I <span class="a">will</span>. / No, I <span class="a">won't</span>.</td></tr>
+      </table>
+      <div class="meta"><span class="lbl">Слова-подсказки</span>
+        <div class="markers"><span>by tomorrow</span><span>by Friday</span><span>by 2030</span><span>by the time…</span></div></div>
+      <p class="ex">I <b>will have finished</b> the report by Monday.<i>Я закончу отчёт к понедельнику.</i></p>
+    </article>
+  </div>
+</section>
+
+<!-- QUESTIONS -->
+<section class="aspect" id="questions">
+  <div class="aspect-head">
+    <h2>Вопросы со словом</h2>
+    <p>Вопросительное слово ставится в самое начало. Дальше порядок как в обычном вопросе: вспомогательный глагол, подлежащее, смысловой глагол.</p>
+  </div>
+  <div class="duo">
+    <div class="box wide">
+      <div class="formula"><b>Wh-слово</b> + <span class="a">вспом. глагол</span> + <span class="s">подлежащее</span> + <span class="v">смысловой глагол</span> + остальное?</div>
+      <div class="tbl-scroll">
+      <table class="ref-t">
+        <thead><tr><th>Слово</th><th>Значение</th><th>Пример</th></tr></thead>
+        <tbody>
+          <tr><td>What</td><td>что? какой?</td><td><b>What</b> <span class="a">do</span> <span class="s">you</span> <span class="v">want</span>?<span class="tr">Что ты хочешь?</span></td></tr>
+          <tr><td>Who</td><td>кто? (кого?)</td><td><b>Who</b> <span class="a">did</span> <span class="s">you</span> <span class="v">meet</span>?<span class="tr">Кого ты встретил?</span></td></tr>
+          <tr><td>Whom</td><td>кого? кому? (официально)</td><td><b>To whom</b> <span class="a">should</span> <span class="s">I</span> <span class="v">write</span>?<span class="tr">Кому мне написать? В разговоре чаще Who should I write to?</span></td></tr>
+          <tr><td>Whose</td><td>чей?</td><td><b>Whose</b> phone <span class="a">is</span> <span class="s">this</span>?<span class="tr">Чей это телефон?</span></td></tr>
+          <tr><td>Which</td><td>который? какой из?</td><td><b>Which</b> dress <span class="a">will</span> <span class="s">you</span> <span class="v">buy</span>?<span class="tr">Какое платье (из этих) ты купишь?</span></td></tr>
+          <tr><td>Where</td><td>где? куда?</td><td><b>Where</b> <span class="a">are</span> <span class="s">you</span> <span class="v">going</span>?<span class="tr">Куда ты идёшь?</span></td></tr>
+          <tr><td>When</td><td>когда?</td><td><b>When</b> <span class="a">does</span> <span class="s">the shop</span> <span class="v">open</span>?<span class="tr">Когда открывается магазин?</span></td></tr>
+          <tr><td>Why</td><td>почему? зачем?</td><td><b>Why</b> <span class="a">have</span> <span class="s">they</span> <span class="v">left</span>?<span class="tr">Почему они ушли?</span></td></tr>
+          <tr><td>How</td><td>как?</td><td><b>How</b> <span class="a">did</span> <span class="s">you</span> <span class="v">do</span> it?<span class="tr">Как ты это сделал?</span></td></tr>
+        </tbody>
+      </table>
+      </div>
+    </div>
+
+    <div class="box">
+      <h3>How + слово</h3>
+      <div class="tbl-scroll">
+      <table class="ref-t">
+        <tbody>
+          <tr><td>How old</td><td>сколько лет?<span class="tr">How old are you?</span></td></tr>
+          <tr><td>How much</td><td>сколько? (неисчисляемое, цена)<span class="tr">How much water / How much is it?</span></td></tr>
+          <tr><td>How many</td><td>сколько? (можно посчитать)<span class="tr">How many books do you have?</span></td></tr>
+          <tr><td>How long</td><td>как долго? какой длины?<span class="tr">How long have you lived here?</span></td></tr>
+          <tr><td>How often</td><td>как часто?<span class="tr">How often do you go to the gym?</span></td></tr>
+          <tr><td>How far</td><td>как далеко?<span class="tr">How far is the station?</span></td></tr>
+          <tr><td>How tall / big</td><td>какого роста / размера?<span class="tr">How tall is your brother?</span></td></tr>
+        </tbody>
+      </table>
+      </div>
+    </div>
+
+    <div class="box">
+      <h3>What / Which / Whose + существительное</h3>
+      <p class="note">Существительное идёт сразу за вопросительным словом, потом обычный порядок.</p>
+      <div class="wh">
+        <span><b>What time</b> <span class="a">is</span> <span class="s">it</span>? — Который час?</span>
+        <span><b>What colour</b> <span class="a">is</span> <span class="s">your car</span>? — Какого цвета твоя машина?</span>
+        <span><b>What kind of</b> music <span class="a">do</span> <span class="s">you</span> <span class="v">like</span>? — Какую музыку ты любишь?</span>
+        <span><b>Which bus</b> <span class="a">goes</span> to the centre? — Какой автобус идёт в центр?</span>
+        <span><b>Whose keys</b> <span class="a">are</span> <span class="s">these</span>? — Чьи это ключи?</span>
+      </div>
+      <p class="note"><b>What</b>, когда выбор любой. <b>Which</b>, когда выбираем из нескольких известных вариантов.</p>
+    </div>
+
+    <div class="box">
+      <h3>Вопрос к подлежащему: без do / does / did</h3>
+      <p class="note">Если Who или What само является подлежащим (спрашиваем, <b>кто сделал</b>), вспомогательный глагол не нужен. Порядок слов как в утверждении.</p>
+      <div class="compare">
+        <div class="row"><span class="bad"><s>Who did call you?</s></span><span class="good"><b>Who</b> <span class="v">called</span> you? — Кто тебе звонил?</span></div>
+        <div class="row"><span class="bad"><s>What does happen?</s></span><span class="good"><b>What</b> <span class="v">happens</span>? — Что происходит?</span></div>
+        <div class="row"><span class="bad"><s>Who does live here?</s></span><span class="good"><b>Who</b> <span class="v">lives</span> here? — Кто здесь живёт?</span></div>
+      </div>
+      <p class="note">Сравните: <b>Who</b> <span class="v">loves</span> Anna? (кто любит Анну?) и <b>Who</b> <span class="a">does</span> <span class="s">Anna</span> <span class="v">love</span>? (кого любит Анна?).</p>
+    </div>
+
+    <div class="box">
+      <h3>Предлог в конце вопроса</h3>
+      <p class="note">В разговорном английском предлог обычно уходит в самый конец.</p>
+      <div class="wh">
+        <span><b>Where</b> <span class="a">are</span> <span class="s">you</span> <b>from</b>? — Откуда ты?</span>
+        <span><b>What</b> <span class="a">are</span> <span class="s">you</span> <span class="v">talking</span> <b>about</b>? — О чём ты говоришь?</span>
+        <span><b>Who</b> <span class="a">are</span> <span class="s">you</span> <span class="v">waiting</span> <b>for</b>? — Кого ты ждёшь?</span>
+        <span><b>What</b> <span class="a">is</span> <span class="s">it</span> <b>for</b>? — Для чего это?</span>
+      </div>
+    </div>
+
+    <div class="box wide">
+      <h3>Один вопрос в разных временах</h3>
+      <p class="note">Меняется только вспомогательный глагол и форма смыслового. Вопросительное слово всегда стоит первым.</p>
+      <div class="tbl-scroll">
+      <table class="ref-t">
+        <tbody>
+          <tr><td>Present Simple</td><td><b>Where</b> <span class="a">do</span> <span class="s">you</span> <span class="v">work</span>?<span class="tr">Где ты работаешь?</span></td></tr>
+          <tr><td>Past Simple</td><td><b>Where</b> <span class="a">did</span> <span class="s">you</span> <span class="v">work</span>?<span class="tr">Где ты работал?</span></td></tr>
+          <tr><td>Future Simple</td><td><b>Where</b> <span class="a">will</span> <span class="s">you</span> <span class="v">work</span>?<span class="tr">Где ты будешь работать?</span></td></tr>
+          <tr><td>Present Continuous</td><td><b>Where</b> <span class="a">are</span> <span class="s">you</span> <span class="v">working</span> now?<span class="tr">Где ты сейчас работаешь?</span></td></tr>
+          <tr><td>Past Continuous</td><td><b>Where</b> <span class="a">were</span> <span class="s">you</span> <span class="v">working</span> in 2020?<span class="tr">Где ты работал в 2020-м?</span></td></tr>
+          <tr><td>Present Perfect</td><td><b>Where</b> <span class="a">have</span> <span class="s">you</span> <span class="v">worked</span>?<span class="tr">Где тебе доводилось работать?</span></td></tr>
+          <tr><td>с глаголом be</td><td><b>Where</b> <span class="a">is</span> <span class="s">she</span>? / <b>Where</b> <span class="a">was</span> <span class="s">she</span>?<span class="tr">Где она? / Где она была? С be вспомогательный глагол не нужен.</span></td></tr>
+        </tbody>
+      </table>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ARTICLES -->
+<section class="aspect" id="articles">
+  <div class="aspect-head">
+    <h2>Артикли</h2>
+    <p>Перед существительным почти всегда стоит артикль или другое слово-определитель (my, this, some). Главный вопрос: собеседник уже знает, о каком предмете речь, или нет?</p>
+  </div>
+  <div class="duo">
+    <div class="box">
+      <div class="box-head"><span class="big-art">a / an</span><p>неопределённый: «какой-то, один из»</p></div>
+      <ul>
+        <li>Только с <b>исчисляемыми</b> в <b>единственном</b> числе: <span class="art">a</span> cat, но cats, water.</li>
+        <li>Упоминаем впервые: I saw <span class="art">a</span> dog.</li>
+        <li>Говорим, кто это или что это: She is <span class="art">a</span> doctor. It's <span class="art">an</span> apple.</li>
+        <li>Значение «один»: <span class="art">a</span> week, twice <span class="art">a</span> day.</li>
+      </ul>
+      <p class="note">Как выбрать между <b>a</b> и <b>an</b>, смотрите в блоке <a class="more" href="#a-an">«a или an?»</a> ниже, там же есть тренажёр.</p>
+    </div>
+
+    <div class="box">
+      <div class="box-head"><span class="big-art">the</span><p>определённый: «тот самый»</p></div>
+      <ul>
+        <li>Уже упоминали: I saw a dog. <span class="art">The</span> dog was black.</li>
+        <li>Обоим понятно из ситуации: Close <span class="art">the</span> door, please.</li>
+        <li>Единственный в своём роде: <span class="art">the</span> sun, <span class="art">the</span> moon, <span class="art">the</span> world.</li>
+        <li>Превосходная степень и порядковые числа: <span class="art">the</span> best, <span class="art">the</span> first.</li>
+        <li>Есть уточнение: <span class="art">the</span> man <i>in the red coat</i>.</li>
+        <li>Музыкальные инструменты: play <span class="art">the</span> guitar.</li>
+      </ul>
+    </div>
+
+    <div class="box">
+      <div class="box-head"><span class="big-art">—</span><p>без артикля</p></div>
+      <ul>
+        <li>Множественное число и неисчисляемые в общем смысле: I like cats. Water is important.</li>
+        <li>Имена, города, большинство стран: Anna, Moscow, Russia, France.</li>
+        <li>Языки, спорт, предметы: speak English, play football, study maths.</li>
+        <li>Приёмы пищи: have breakfast, lunch, dinner.</li>
+        <li>Дни, месяцы, праздники: on Monday, in May, at Christmas.</li>
+        <li>Если уже есть my, your, this, some, no: <i>my</i> car (не the my car).</li>
+      </ul>
+    </div>
+
+    <div class="box">
+      <h3>География и названия</h3>
+      <div class="tbl-scroll">
+      <table class="ref-t">
+        <thead><tr><th>С the</th><th>Без артикля</th></tr></thead>
+        <tbody>
+          <tr><td>реки, моря, океаны<span class="tr">the Volga, the Black Sea</span></td><td>озёра<span class="tr">Lake Baikal</span></td></tr>
+          <tr><td>горные цепи<span class="tr">the Alps, the Urals</span></td><td>отдельные горы<span class="tr">Everest, Elbrus</span></td></tr>
+          <tr><td>страны со словами republic, kingdom, states или во мн. ч.<span class="tr">the USA, the UK, the Netherlands</span></td><td>большинство стран и городов<span class="tr">Russia, Italy, London</span></td></tr>
+          <tr><td>пустыни, группы островов<span class="tr">the Sahara, the Canaries</span></td><td>улицы, площади, парки<span class="tr">Oxford Street, Hyde Park</span></td></tr>
+          <tr><td>театры, музеи, отели<span class="tr">the Bolshoi, the Louvre, the Hilton</span></td><td>континенты<span class="tr">Europe, Asia</span></td></tr>
+        </tbody>
+      </table>
+      </div>
+    </div>
+
+    <div class="box wide" id="a-an">
+      <h3>a или an?</h3>
+      <p>Это один и тот же артикль. <b>an</b> нужен только для того, чтобы было удобно произносить: между двумя гласными звуками появляется «н». Поэтому выбор зависит от <b>первого звука</b> следующего слова, а не от буквы.</p>
+      <div class="aan">
+        <div class="aan-col">
+          <div class="box-head"><span class="big-art">a</span><p>перед <b>согласным звуком</b></p></div>
+          <div class="pairs"><span>a cat</span><span>a dog</span><span>a book</span><span>a house</span><span>a big apple</span><span>a year</span><span>a university</span></div>
+        </div>
+        <div class="aan-col">
+          <div class="box-head"><span class="big-art">an</span><p>перед <b>гласным звуком</b>: а, э, и, о, у</p></div>
+          <div class="pairs"><span>an apple</span><span>an egg</span><span>an idea</span><span>an orange</span><span>an umbrella</span><span>an old car</span><span>an hour</span></div>
+        </div>
+      </div>
+
+      <p class="formula">Проверка: скажите слово вслух. Начинается с «а, э, и, о, у» → <span class="art">an</span>. Со звука «й», «в» или любого другого согласного → <span class="art">a</span>.</p>
+
+      <h3>Ловушки: буква обманывает, слушаем звук</h3>
+      <div class="tbl-scroll">
+      <table class="ref-t">
+        <thead><tr><th>Слово</th><th>Как начинается на слух</th><th>Почему</th></tr></thead>
+        <tbody>
+          <tr><td><span class="art">a</span> university</td><td>«юни…»</td><td>буква u, но звук «й» + «у», это согласный</td></tr>
+          <tr><td><span class="art">a</span> European</td><td>«юэ…»</td><td>буква e, но звук «й»</td></tr>
+          <tr><td><span class="art">a</span> uniform</td><td>«юни…»</td><td>так же, как university</td></tr>
+          <tr><td><span class="art">a</span> one-way ticket</td><td>«уан…»</td><td>буква o, но звук «w» (в / у)</td></tr>
+          <tr><td><span class="art">an</span> umbrella</td><td>«ам…»</td><td>здесь u читается как «а», это гласный</td></tr>
+          <tr><td><span class="art">an</span> hour</td><td>«ауэ»</td><td>h не читается, слово начинается с «а»</td></tr>
+          <tr><td><span class="art">an</span> honest man</td><td>«онист»</td><td>h не читается</td></tr>
+          <tr><td><span class="art">a</span> horse, <span class="art">a</span> house</td><td>«хо…», «хау…»</td><td>здесь h читается, это согласный</td></tr>
+          <tr><td><span class="art">an</span> MBA, <span class="art">an</span> SMS</td><td>«эм…», «эс…»</td><td>аббревиатура читается по буквам с гласного звука</td></tr>
+          <tr><td><span class="art">an</span> X-ray</td><td>«экс…»</td><td>буква x звучит как «экс»</td></tr>
+        </tbody>
+      </table>
+      </div>
+
+      <h3>Смотрим на соседнее слово</h3>
+      <p class="note">Артикль выбирается по слову, которое стоит сразу после него. Если перед существительным есть прилагательное, смотрим на прилагательное.</p>
+      <div class="compare">
+        <div class="row"><span><span class="art">an</span> apple</span><span><span class="art">a</span> <b>big</b> apple</span></div>
+        <div class="row"><span><span class="art">a</span> car</span><span><span class="art">an</span> <b>old</b> car</span></div>
+        <div class="row"><span><span class="art">an</span> idea</span><span><span class="art">a</span> <b>good</b> idea</span></div>
+        <div class="row"><span><span class="art">a</span> book</span><span><span class="art">an</span> <b>interesting</b> book</span></div>
+      </div>
+
+      <h3>Тренажёр</h3>
+      <p class="note">Выберите a или an для каждого слова. Ответ проверяется сразу.</p>
+      <div class="quiz" id="quiz"></div>
+      <div class="quiz-foot"><span id="quiz-score">Отвечено 0 из 12</span><button type="button" class="q-reset" id="quiz-reset">Ещё раз</button></div>
+    </div>
+
+    <div class="box wide">
+      <h3>Устойчивые выражения</h3>
+      <p class="note">Их проще запомнить целиком, чем выводить правило.</p>
+      <div class="ref">
+        <div class="meta"><span class="lbl">Без артикля</span>
+          <div class="pairs"><span>at home</span><span>at work</span><span>at school</span><span>go to bed</span><span>go to work</span><span>by bus / by car</span><span>on foot</span><span>at night</span><span>next week</span><span>last year</span></div></div>
+        <div class="meta"><span class="lbl">С the</span>
+          <div class="pairs"><span>in the morning</span><span>in the evening</span><span>go to the cinema</span><span>go to the shop</span><span>the same</span><span>the other day</span><span>on the left / right</span><span>listen to the radio</span><span>in the north</span></div></div>
+        <div class="meta"><span class="lbl">С a / an</span>
+          <div class="pairs"><span>have a good time</span><span>have a rest</span><span>a lot of</span><span>a few / a little</span><span>once a week</span><span>in a hurry</span><span>what a pity!</span></div></div>
+      </div>
+    </div>
+
+    <div class="box wide">
+      <h3>Частые ошибки</h3>
+      <div class="compare">
+        <div class="row"><span class="bad"><s>I am student.</s></span><span class="good">I am <span class="art">a</span> student. — Профессия и «кто я» с a/an.</span></div>
+        <div class="row"><span class="bad"><s>I like the music.</s> (музыку вообще)</span><span class="good">I like music. — В общем смысле артикля нет.</span></div>
+        <div class="row"><span class="bad"><s>The life is beautiful.</s></span><span class="good">Life is beautiful. — Абстрактное понятие в общем смысле.</span></div>
+        <div class="row"><span class="bad"><s>She plays a piano.</s></span><span class="good">She plays <span class="art">the</span> piano. — Инструменты с the.</span></div>
+        <div class="row"><span class="bad"><s>a hour, an university</s></span><span class="good"><span class="art">an</span> hour, <span class="art">a</span> university — Смотрим на звук.</span></div>
+        <div class="row"><span class="bad"><s>I have a money.</s></span><span class="good">I have <i>some</i> money. — С неисчисляемыми a/an нельзя.</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- REFERENCE -->
+<section class="aspect" id="verbs">
+  <div class="aspect-head"><h2>Формы глагола</h2></div>
+  <div class="ref">
+    <div class="box">
+      <h3>Три формы глагола</h3>
+      <ul>
+        <li><b>V1</b> — начальная форма: work, go. Present Simple, Future, после do/does/did/will.</li>
+        <li><b>V2</b> — прошедшее: worked, went. Только в Past Simple (утверждение).</li>
+        <li><b>V3</b> — причастие: worked, gone. Во всех Perfect после have/has/had.</li>
+        <li><b>V-ing</b> — working, going. Во всех Continuous после am/is/are/was/were/be.</li>
+      </ul>
+      <p class="note">У правильных глаголов V2 = V3 = V+ed. Неправильные надо запомнить (таблица ниже).</p>
+    </div>
+
+    <div class="box">
+      <h3>Окончания: -s, -ed, -ing</h3>
+      <ul>
+        <li><b>-s</b> (he/she/it): work → works; после s, sh, ch, x, o → <b>-es</b>: watches, goes; согласная + y → <b>-ies</b>: study → studies.</li>
+        <li><b>-ed</b>: play → played; немая e → +d: live → lived; согласная + y → <b>-ied</b>: try → tried; короткий слог удваивает согласную: stop → stopped.</li>
+        <li><b>-ing</b>: read → reading; e выпадает: make → making; ie → y: lie → lying; удвоение: run → running, swim → swimming.</li>
+      </ul>
+    </div>
+
+    <div class="box">
+      <h3>Частые неправильные глаголы</h3>
+      <div class="tbl-scroll">
+      <table class="irr">
+        <thead><tr><th>V1</th><th>V2</th><th>V3</th><th>Перевод</th></tr></thead>
+        <tbody>
+          <tr><td>be</td><td>was / were</td><td>been</td><td>быть</td></tr>
+          <tr><td>have</td><td>had</td><td>had</td><td>иметь</td></tr>
+          <tr><td>do</td><td>did</td><td>done</td><td>делать</td></tr>
+          <tr><td>go</td><td>went</td><td>gone</td><td>идти, ехать</td></tr>
+          <tr><td>see</td><td>saw</td><td>seen</td><td>видеть</td></tr>
+          <tr><td>make</td><td>made</td><td>made</td><td>делать, создавать</td></tr>
+          <tr><td>take</td><td>took</td><td>taken</td><td>брать</td></tr>
+          <tr><td>come</td><td>came</td><td>come</td><td>приходить</td></tr>
+          <tr><td>write</td><td>wrote</td><td>written</td><td>писать</td></tr>
+          <tr><td>eat</td><td>ate</td><td>eaten</td><td>есть</td></tr>
+          <tr><td>buy</td><td>bought</td><td>bought</td><td>покупать</td></tr>
+          <tr><td>know</td><td>knew</td><td>known</td><td>знать</td></tr>
+        </tbody>
+      </table>
+      </div>
+    </div>
+  </div>
+</section>
+</div>
+
+<script>
+(function(){
+  var links = Array.prototype.slice.call(document.querySelectorAll('.toc a'));
+  var sections = links.map(function(a){ return document.querySelector(a.getAttribute('href')); });
+  var current = null;
+  function update(){
+    var line = 100, idx = 0;
+    sections.forEach(function(s, i){ if (s && s.getBoundingClientRect().top <= line) idx = i; });
+    if ((window.innerHeight + window.scrollY) >= document.documentElement.scrollHeight - 2) idx = sections.length - 1;
+    if (idx === current) return;
+    current = idx;
+    links.forEach(function(a, i){ a.setAttribute('aria-current', i === idx ? 'true' : 'false'); });
+    var a = links[idx], bar = a.parentNode;
+    var left = a.offsetLeft - (bar.clientWidth - a.offsetWidth) / 2;
+    bar.scrollTo ? bar.scrollTo({left: left, behavior: 'smooth'}) : (bar.scrollLeft = left);
+  }
+  window.addEventListener('scroll', update, {passive: true});
+  window.addEventListener('resize', update);
+  update();
+})();
+</script>
+
+<script>
+var EN = (function(){
+  var VERBS = [
+    ['work','','','работать'],['play','','','играть'],['watch','','','смотреть'],['study','','','учиться, изучать'],
+    ['live','','','жить'],['want','','','хотеть'],['like','','','нравиться, любить'],['help','','','помогать'],
+    ['cook','','','готовить'],['clean','','','убирать'],['listen','','','слушать'],['stop','','','останавливать(ся)'],
+    ['visit','','','посещать'],
+    ['go','went','gone','идти, ехать'],['do','did','done','делать'],['make','made','made','делать, создавать'],
+    ['have','had','had','иметь'],['see','saw','seen','видеть'],['eat','ate','eaten','есть, кушать'],
+    ['drink','drank','drunk','пить'],['read','read','read','читать'],['write','wrote','written','писать'],
+    ['speak','spoke','spoken','говорить'],['buy','bought','bought','покупать'],['take','took','taken','брать'],
+    ['come','came','come','приходить'],['get','got','got','получать'],['know','knew','known','знать'],
+    ['sleep','slept','slept','спать'],['swim','swam','swum','плавать'],['run','ran','run','бегать'],
+    ['think','thought','thought','думать'],['meet','met','met','встречать']
+  ];
+  var SUBJ = [
+    {w:'I',p:'1s'},{w:'you',p:'pl'},{w:'he',p:'3s'},{w:'she',p:'3s'},{w:'it',p:'3s'},{w:'we',p:'pl'},{w:'they',p:'pl'}
+  ];
+  var CONTR = {do:"don't",does:"doesn't",did:"didn't",will:"won't",is:"isn't",are:"aren't",was:"wasn't",were:"weren't",have:"haven't",has:"hasn't",had:"hadn't"};
+
+  function isCVC(v){ return /^[^aeiou]*[aeiou][bcdfgklmnprstvz]$/.test(v); }
+  function sForm(v){
+    var o = {have:'has', do:'does', go:'goes'};
+    if (o[v]) return o[v];
+    if (/(s|sh|ch|x|z|o)$/.test(v)) return v + 'es';
+    if (/[^aeiou]y$/.test(v)) return v.slice(0,-1) + 'ies';
+    return v + 's';
+  }
+  function ingForm(v){
+    if (/ie$/.test(v)) return v.slice(0,-2) + 'ying';
+    if (/e$/.test(v) && !/(ee|ye|oe)$/.test(v) && v.length > 2) return v.slice(0,-1) + 'ing';
+    if (isCVC(v)) return v + v.slice(-1) + 'ing';
+    return v + 'ing';
+  }
+  function edForm(v){
+    if (/e$/.test(v)) return v + 'd';
+    if (/[^aeiou]y$/.test(v)) return v.slice(0,-1) + 'ied';
+    if (isCVC(v)) return v + v.slice(-1) + 'ed';
+    return v + 'ed';
+  }
+  VERBS.forEach(function(r){ if (!r[1]) { r[1] = edForm(r[0]); r[2] = r[1]; r.push(false); } else r.push(true); });
+
+  function verbInfo(v1, irregular, v2, v3, ru){
+    return {v1:v1, v2:v2 || edForm(v1), v3:v3 || edForm(v1), s:sForm(v1), ing:ingForm(v1), irr:!!irregular, ru:ru || ''};
+  }
+
+  // aux chain and main-verb form
+  function auxFor(time, aspect, p, type){
+    var pos = type === 'pos';
+    if (aspect === 'simple'){
+      if (time === 'present') return pos ? {aux:[], vf: p === '3s' ? 's' : 'v1'} : {aux:[p === '3s' ? 'does' : 'do'], vf:'v1'};
+      if (time === 'past') return pos ? {aux:[], vf:'v2'} : {aux:['did'], vf:'v1'};
+      return {aux:['will'], vf:'v1'};
+    }
+    if (aspect === 'continuous'){
+      if (time === 'present') return {aux:[p === '1s' ? 'am' : p === '3s' ? 'is' : 'are'], vf:'ing'};
+      if (time === 'past') return {aux:[p === 'pl' ? 'were' : 'was'], vf:'ing'};
+      return {aux:['will','be'], vf:'ing'};
+    }
+    if (time === 'present') return {aux:[p === '3s' ? 'has' : 'have'], vf:'v3'};
+    if (time === 'past') return {aux:['had'], vf:'v3'};
+    return {aux:['will','have'], vf:'v3'};
+  }
+
+  function cap(s){ return s.charAt(0).toUpperCase() + s.slice(1); }
+
+  // returns {tokens:[{t,c,f}], end:'.'|'?', a}
+  function tokens(st, verb, subj, typeOverride){
+    var type = typeOverride || st.type;
+    var a = auxFor(st.time, st.aspect, subj.p, type);
+    var irr = verb.irr;
+    var LBL = {v1:'V1', v2: irr ? 'V2' : 'V+ed', v3: irr ? 'V3' : 'V+ed', s:'V+s', ing:'V-ing'};
+    var S = {t:subj.w, c:'s', f:'S'};
+    var V = {t:verb[a.vf], c:'v', f:LBL[a.vf]};
+    var auxT = a.aux.map(function(x){ return {t:x, c:'a', f:x}; });
+    var out = [];
+    if (type === 'pos') out = [S].concat(auxT, [V]);
+    else if (type === 'neg') out = [S].concat(auxT.slice(0,1), [{t:'not', c:'n', f:'not'}], auxT.slice(1), [V]);
+    else {
+      if (type === 'wh') out.push({t:st.wh, c:'w', f:st.wh});
+      out = out.concat(auxT.slice(0,1), [S], auxT.slice(1), [V]);
+    }
+    if (st.rest) out.push({t:st.rest, c:'x', f:'…'});
+    out[0] = {t:cap(out[0].t), c:out[0].c, f:cap(out[0].f)};
+    return {tokens:out, end:(type === 'q' || type === 'wh') ? '?' : '.', a:a};
+  }
+  function toText(r){ return r.tokens.map(function(t){ return t.t; }).join(' ') + r.end; }
+
+  var TNAME = {past:'Past', present:'Present', future:'Future'};
+  var ANAME = {simple:'Simple', continuous:'Continuous', perfect:'Perfect'};
+  var TYNAME = {pos:'утверждение', neg:'отрицание', q:'вопрос', wh:'вопрос со словом'};
+
+  function build(st){
+    var subj = SUBJ[st.subj];
+    var verb;
+    if (st.verb === 'custom'){
+      var v = (st.custom || '').trim().toLowerCase();
+      if (!/^[a-z]+$/.test(v)) return {error:'Впишите глагол латиницей в начальной форме, например: visit.'};
+      verb = verbInfo(v, false);
+    } else {
+      var row = VERBS[st.verb];
+      verb = verbInfo(row[0], row[4], row[1], row[2], row[3]);
+    }
+    var r = tokens(st, verb, subj);
+    var a = r.a, aux0 = a.aux[0];
+    var res = {
+      name: TNAME[st.time] + ' ' + ANAME[st.aspect] + ' · ' + TYNAME[st.type],
+      anchor: st.time + '-' + st.aspect,
+      tense: TNAME[st.time] + ' ' + ANAME[st.aspect],
+      tokens: r.tokens, end: r.end, text: toText(r),
+      formula: r.tokens.map(function(t){ return t.f; }).join(' + ') + r.end,
+      verb: verb, rules: [], extra: []
+    };
+
+    // why: tense rules
+    var R = res.rules, irr = verb.irr, v1 = verb.v1;
+    var pos = st.type === 'pos';
+    if (st.aspect === 'simple' && st.time === 'present'){
+      if (pos) R.push(subj.p === '3s' ? 'He / she / it: к глаголу добавляется -s или -es (' + v1 + ' → ' + verb.s + ').' : 'I / you / we / they: глагол в начальной форме (V1), без окончаний.');
+      else { R.push('Нужен вспомогательный глагол do, а для he / she / it — does.'); R.push('После do / does глагол в начальной форме, без -s: does ' + v1 + ', а не does ' + verb.s + '.'); }
+    } else if (st.aspect === 'simple' && st.time === 'past'){
+      if (pos) R.push(irr ? 'Неправильный глагол: берём 2-ю форму (' + v1 + ' → ' + verb.v2 + ').' : 'Правильный глагол: добавляем -ed (' + v1 + ' → ' + verb.v2 + ').');
+      else { R.push('Вспомогательный глагол did — один для всех лиц.'); R.push('После did глагол в начальной форме: did ' + v1 + (verb.v2 !== v1 ? ', а не did ' + verb.v2 : '') + '.'); }
+    } else if (st.aspect === 'simple'){
+      R.push('will — один для всех лиц, после него глагол в начальной форме (V1).');
+    } else if (st.aspect === 'continuous'){
+      if (st.time === 'present') R.push('be в настоящем: I am, he / she / it is, you / we / they are.');
+      else if (st.time === 'past') R.push('be в прошедшем: I / he / she / it was, you / we / they were.');
+      else R.push('will be — одинаково для всех лиц.');
+      R.push('Глагол с окончанием -ing: ' + v1 + ' → ' + verb.ing + '.');
+    } else {
+      if (st.time === 'present') R.push('have, а для he / she / it — has.');
+      else if (st.time === 'past') R.push('had — один для всех лиц.');
+      else R.push('will have — одинаково для всех лиц.');
+      R.push(irr ? 'Глагол в 3-й форме (V3): ' + v1 + ' → ' + verb.v3 + '.' : 'Правильный глагол: 3-я форма = +ed (' + v1 + ' → ' + verb.v3 + ').');
+    }
+    if (st.type === 'neg') R.push('not ставится сразу после первого вспомогательного глагола.');
+    if (st.type === 'q') R.push('Вспомогательный глагол выходит вперёд, перед подлежащим.');
+    if (st.type === 'wh') R.push('Вопросительное слово — в самое начало, дальше порядок как в обычном вопросе.');
+
+    // extra lines
+    res.extra.push(['Глагол', verb.v1 + (verb.ru ? ' — ' + verb.ru : '') + (irr ? ' (неправильный: ' + verb.v1 + ' – ' + verb.v2 + ' – ' + verb.v3 + ')' : '')]);
+    if (st.type === 'neg'){
+      var rest = r.tokens.slice(0);
+      var i = rest.findIndex(function(t){ return t.c === 'n'; });
+      var merged = aux0 === 'am' ? [{t:"I'm not"}] : [{t:CONTR[aux0]}];
+      var shortT = (aux0 === 'am' ? [] : [rest[0]]).concat(merged, rest.slice(i + 1));
+      res.extra.push(['В разговоре', shortT.map(function(t){ return t.t; }).join(' ') + '.']);
+    }
+    if (st.type === 'q'){
+      var ans = subj.w === 'I' ? SUBJ[1] : subj.w === 'you' ? SUBJ[0] : subj;
+      var ax = auxFor(st.time, st.aspect, ans.p, 'q').aux[0];
+      var yes = 'Yes, ' + ans.w + ' ' + ax + '.';
+      var no = ax === 'am' ? "No, I'm not." : 'No, ' + ans.w + ' ' + CONTR[ax] + '.';
+      res.extra.push(['Краткий ответ', yes + ' / ' + no]);
+    }
+    if (st.type === 'wh'){
+      var who = subj.w === 'I' ? SUBJ[1] : subj.w === 'you' ? SUBJ[0] : subj;
+      var p = tokens({time:st.time, aspect:st.aspect, type:'pos', rest: '…' + (st.rest ? ' ' + st.rest : '')}, verb, who, 'pos');
+      var txt = toText(p).replace(/…\.$/, '…');
+      res.extra.push(['Ответ строится как утверждение', txt + ' (на месте … — ответ на вопрос)']);
+    }
+    return res;
+  }
+
+  return {VERBS:VERBS, SUBJ:SUBJ, build:build, ingForm:ingForm, edForm:edForm, sForm:sForm};
+})();
+(function(){
+  var form = document.getElementById('b-form');
+  if (!form) return;
+  function group(id, name, items, checked){
+    var box = document.getElementById(id);
+    box.innerHTML = '';
+    items.forEach(function(it){
+      var lab = document.createElement('label'); lab.className = 'opt';
+      var inp = document.createElement('input'); inp.type = 'radio'; inp.name = name; inp.value = it.v; inp.id = 'b-' + name + '-' + String(it.v).replace(/\s+/g, '-');
+      if (String(it.v) === String(checked)) inp.checked = true;
+      var sp = document.createElement('span'); sp.textContent = it.label;
+      if (it.small){ var sm = document.createElement('small'); sm.textContent = it.small; sp.appendChild(sm); }
+      lab.appendChild(inp); lab.appendChild(sp); box.appendChild(lab);
+    });
+  }
+  group('g-time', 'time', [
+    {v:'past', label:'Прошлое', small:'Past'}, {v:'present', label:'Настоящее', small:'Present'}, {v:'future', label:'Будущее', small:'Future'}
+  ], 'present');
+  group('g-aspect', 'aspect', [
+    {v:'simple', label:'Факт, привычка', small:'Simple: просто происходит'},
+    {v:'continuous', label:'Процесс', small:'Continuous: идёт в момент'},
+    {v:'perfect', label:'Результат', small:'Perfect: уже сделано к моменту'}
+  ], 'simple');
+  group('g-type', 'type', [
+    {v:'pos', label:'+ Утверждение'}, {v:'neg', label:'− Отрицание'}, {v:'q', label:'? Вопрос'}, {v:'wh', label:'Вопрос со словом'}
+  ], 'q');
+  group('g-wh', 'wh', [
+    {v:'What', label:'What', small:'что?'}, {v:'Where', label:'Where', small:'где? куда?'}, {v:'When', label:'When', small:'когда?'},
+    {v:'Why', label:'Why', small:'почему?'}, {v:'How', label:'How', small:'как?'}, {v:'How often', label:'How often', small:'как часто?'},
+    {v:'How long', label:'How long', small:'как долго?'}
+  ], 'Where');
+  group('g-subj', 'subj', EN.SUBJ.map(function(s, i){
+    var ru = ['я','ты, вы','он','она','оно, это','мы','они'][i];
+    return {v:i, label:s.w, small:ru};
+  }), 2);
+
+  var sel = document.getElementById('b-verb');
+  function og(label, irr){
+    var g = document.createElement('optgroup'); g.label = label;
+    EN.VERBS.forEach(function(r, i){
+      if (r[4] !== irr) return;
+      var o = document.createElement('option'); o.value = i;
+      o.textContent = r[0] + ' — ' + r[3] + (irr ? '  (' + r[1] + ', ' + r[2] + ')' : '');
+      g.appendChild(o);
+    });
+    sel.appendChild(g);
+  }
+  og('Правильные глаголы', false);
+  og('Неправильные глаголы', true);
+  var oc = document.createElement('option'); oc.value = 'custom'; oc.textContent = 'Свой глагол…'; sel.appendChild(oc);
+  sel.value = '0';
+
+  function val(name){ var c = form.querySelector('input[name="' + name + '"]:checked'); return c ? c.value : null; }
+  function span(cls, text){ var s = document.createElement('span'); if (cls) s.className = cls; s.textContent = text; return s; }
+
+  function render(){
+    var st = {
+      time: val('time'), aspect: val('aspect'), type: val('type'), wh: val('wh'),
+      subj: +val('subj'), verb: sel.value === 'custom' ? 'custom' : +sel.value,
+      custom: document.getElementById('b-custom').value,
+      rest: document.getElementById('b-rest').value.trim().replace(/[.?!]+$/, '')
+    };
+    document.getElementById('g-wh').hidden = st.type !== 'wh';
+    document.getElementById('rest-hint').hidden = st.type !== 'wh';
+    document.getElementById('custom-wrap').hidden = st.verb !== 'custom';
+    var res = EN.build(st);
+    var sent = document.getElementById('r-sent'), extra = document.getElementById('r-extra'), rules = document.getElementById('r-rules');
+    sent.innerHTML = ''; extra.innerHTML = ''; rules.innerHTML = '';
+    if (res.error){
+      document.getElementById('r-name').textContent = 'Свой глагол';
+      sent.appendChild(span('warn', res.error));
+      document.getElementById('r-formula').textContent = '—';
+      return;
+    }
+    document.getElementById('r-name').textContent = res.name;
+    res.tokens.forEach(function(t, i){
+      if (i) sent.appendChild(document.createTextNode(' '));
+      sent.appendChild(span(t.c, t.t + (i === res.tokens.length - 1 ? res.end : '')));
+    });
+    document.getElementById('r-formula').textContent = res.formula;
+    res.extra.forEach(function(e){
+      var p = document.createElement('div');
+      p.appendChild(span('kicker', e[0] + ': ')); p.appendChild(document.createTextNode(e[1]));
+      extra.appendChild(p);
+    });
+    res.rules.forEach(function(r){ var li = document.createElement('li'); li.textContent = r; rules.appendChild(li); });
+    var link = document.getElementById('r-link');
+    link.href = '#' + res.anchor; link.textContent = 'Подробнее про ' + res.tense + ' →';
+  }
+  form.addEventListener('change', render);
+  form.addEventListener('input', render);
+  form.addEventListener('submit', function(e){ e.preventDefault(); });
+  render();
+})();
+</script>
+
+<script>
+(function(){
+  var box = document.getElementById('quiz');
+  if (!box) return;
+  var ITEMS = [
+    ['egg', 'an', 'начинается со звука «э», это гласный'],
+    ['house', 'a', 'h здесь читается: «хаус»'],
+    ['umbrella', 'an', 'u читается как «а», это гласный'],
+    ['university', 'a', 'звучит «юни…», первый звук «й», согласный'],
+    ['hour', 'an', 'h не читается, слово звучит «ауэ»'],
+    ['orange', 'an', 'начинается со звука «о»'],
+    ['year', 'a', 'звук «й», это согласный'],
+    ['honest man', 'an', 'h не читается: «онист»'],
+    ['one-day trip', 'a', 'звучит «уан…», первый звук «w»'],
+    ['old book', 'an', 'смотрим на old, а оно начинается с «о»'],
+    ['big apple', 'a', 'смотрим на big, а оно начинается с «б»'],
+    ['X-ray', 'an', 'x читается как «экс»']
+  ];
+  var answered = 0, correct = 0;
+  var score = document.getElementById('quiz-score');
+  function upd(){
+    score.textContent = answered < ITEMS.length
+      ? 'Отвечено ' + answered + ' из ' + ITEMS.length + (answered ? ', верно ' + correct : '')
+      : 'Готово: верно ' + correct + ' из ' + ITEMS.length + (correct === ITEMS.length ? '. Отлично!' : '. Посмотрите подсказки у ошибок.');
+  }
+  function build(){
+    box.innerHTML = ''; answered = 0; correct = 0;
+    ITEMS.forEach(function(it, i){
+      var row = document.createElement('div'); row.className = 'q-row';
+      var w = document.createElement('div'); w.className = 'q-word';
+      var gap = document.createElement('span'); gap.className = 'q-gap'; gap.textContent = '…';
+      w.appendChild(gap); w.appendChild(document.createTextNode(it[0]));
+      var btns = document.createElement('div'); btns.className = 'q-btns';
+      var fb = document.createElement('div'); fb.className = 'q-fb'; fb.setAttribute('aria-live', 'polite');
+      ['a', 'an'].forEach(function(ch){
+        var b = document.createElement('button'); b.type = 'button'; b.textContent = ch; b.id = 'q' + i + '-' + ch;
+        b.setAttribute('aria-label', ch + ' ' + it[0]);
+        b.addEventListener('click', function(){
+          var good = ch === it[1];
+          answered++; if (good) correct++;
+          gap.textContent = it[1];
+          btns.querySelectorAll('button').forEach(function(x){
+            x.disabled = true;
+            if (x.textContent === it[1]) x.className = 'ok';
+            else if (x === b) x.className = 'bad-pick';
+          });
+          fb.className = 'q-fb ' + (good ? 'ok' : 'no');
+          fb.textContent = (good ? 'Верно: ' : 'Нужно ' + it[1] + ': ') + it[2] + '.';
+          upd();
+        });
+        btns.appendChild(b);
+      });
+      row.appendChild(w); row.appendChild(btns); row.appendChild(fb);
+      box.appendChild(row);
+    });
+    upd();
+  }
+  document.getElementById('quiz-reset').addEventListener('click', build);
+  build();
+})();
+</script>
+
+</body>
+</html>
