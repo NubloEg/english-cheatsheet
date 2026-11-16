@@ -180,6 +180,59 @@ table.ref-t td .tr{color:var(--muted);display:block;font-size:13px}
 .more{color:var(--accent);font-weight:600;text-decoration:none;font-size:15px}
 .more:hover{text-decoration:underline}
 .warn{color:var(--c-not);font-size:15px}
+[hidden]{display:none !important}
+.t-short{display:none}
+.lg-short{display:none}
+.opt b{font-weight:inherit}
+.result{order:2}
+.flow{margin-top:4px}
+.verb-fields{display:flex;flex-direction:column;gap:12px}
+.why summary{cursor:pointer;font-weight:600;color:var(--accent);font-size:14px;list-style:none;display:inline-flex;align-items:center;gap:6px}
+.why summary::-webkit-details-marker{display:none}
+.why summary::after{content:"▾";transition:transform .15s}
+.why[open] summary::after{transform:rotate(180deg)}
+.why summary:focus-visible{outline:2px solid var(--accent);outline-offset:2px;border-radius:4px}
+.why-body{display:flex;flex-direction:column;gap:12px;padding-top:12px}
+
+/* phone: builder and result fit one screen */
+@media (max-width:600px){
+  .hide-phone{display:none}
+  #builder{gap:10px}
+  .builder{gap:8px}
+  .result{order:0;position:sticky;top:calc(57px + env(safe-area-inset-top, 0px));z-index:5;padding:10px 12px;gap:6px;box-shadow:0 6px 14px -10px rgba(0,0,0,.35)}
+  .result .kicker{font-size:11px}
+  .sentence{font-size:20px;line-height:1.25}
+  .result .formula{font-size:13px;padding:4px 8px}
+  .why summary{font-size:13px}
+  .why-body{max-height:45vh;overflow-y:auto;padding-top:8px}
+  .controls{padding:10px 12px;gap:8px}
+  .step{gap:4px}
+  .step legend{font-size:13px;margin-bottom:4px;gap:6px}
+  .num{width:18px;height:18px;font-size:11px}
+  .opts{flex-wrap:nowrap;gap:4px;overflow-x:auto;scrollbar-width:none}
+  .opts::-webkit-scrollbar{display:none}
+  .opts .opt,.opts.wide-opts .opt{flex:1 1 0;min-width:0}
+  .opt span{padding:6px 2px;font-size:14px;align-items:center;text-align:center;border-radius:8px}
+  .opt small,.t-long{display:none}
+  .t-short{display:inline}
+  .sub-opts{padding:4px;margin-top:2px}
+  .sub-opts .opt{flex:none}
+  .sub-opts .opt span{padding:5px 10px}
+  .verb-fields{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:8px}
+  #custom-wrap{grid-column:1 / -1}
+  .field{gap:2px}
+  .field label{font-size:11px}
+  .controls select,.controls input[type="text"]{padding:6px 8px;font-size:16px;border-radius:8px}
+  #rest-hint{font-size:12px}
+  .step{display:block}
+  .step legend{float:left;width:54px;margin:0;padding-top:8px;font-family:var(--f-body);font-weight:600;font-size:12px;color:var(--muted)}
+  .step legend .num,.lg-long{display:none}
+  .lg-short{display:inline}
+  .step > .opts,.step > .verb-fields,.step > #rest-hint{margin-left:58px}
+  .step > .sub-opts{margin-top:4px}
+  .step::after{content:"";display:block;clear:both}
+  .verb-fields .field label{display:none}
+}
 
 /* a / an */
 #a-an{scroll-margin-top:calc(72px + env(safe-area-inset-top, 0px))}
@@ -231,7 +284,39 @@ table.ref-t td .tr{color:var(--muted);display:block;font-size:13px}
 <section class="aspect" id="builder">
   <div class="aspect-head">
     <h2>Конструктор предложений</h2>
-    <p>Выберите по шагам, что хотите сказать, и получите готовое предложение со схемой. Любой шаг можно поменять, и предложение сразу перестроится.</p>
+    <p class="hide-phone">Выберите по шагам, что хотите сказать, и получите готовое предложение со схемой. Любой шаг можно поменять, и предложение сразу перестроится.</p>
+  </div>
+
+  <div class="builder">
+    <div class="result" aria-live="polite">
+      <span class="kicker" id="r-name">Present Simple · вопрос</span>
+      <p class="sentence" id="r-sent"><span class="a">Does</span> <span class="s">he</span> <span class="v">work</span> <span class="x">in a bank?</span></p>
+      <div class="formula" id="r-formula">Does + S + V1 + …?</div>
+      <details class="why" id="r-why" open>
+        <summary>Почему так?</summary>
+        <div class="why-body">
+          <div class="r-extra" id="r-extra"></div>
+          <div class="meta"><span class="lbl">Правила</span><ul class="rules" id="r-rules"></ul></div>
+          <a class="more" id="r-link" href="#present-simple">Подробнее про Present Simple →</a>
+        </div>
+      </details>
+    </div>
+
+    <form class="controls" id="b-form" autocomplete="off">
+      <fieldset class="step"><legend><span class="num">1</span><span class="lg-long">Когда это происходит?</span><span class="lg-short">Когда</span></legend><div class="opts wide-opts" id="g-time"></div></fieldset>
+      <fieldset class="step"><legend><span class="num">2</span><span class="lg-long">Что важно в действии?</span><span class="lg-short">Что</span></legend><div class="opts wide-opts" id="g-aspect"></div></fieldset>
+      <fieldset class="step"><legend><span class="num">3</span><span class="lg-long">Какое предложение?</span><span class="lg-short">Тип</span></legend><div class="opts wide-opts" id="g-type"></div>
+        <div class="opts sub-opts" id="g-wh" hidden></div></fieldset>
+      <fieldset class="step"><legend><span class="num">4</span><span class="lg-long">Кто делает?</span><span class="lg-short">Кто</span></legend><div class="opts" id="g-subj"></div></fieldset>
+      <fieldset class="step"><legend><span class="num">5</span><span class="lg-long">Какое действие?</span><span class="lg-short">Глагол</span></legend>
+        <div class="verb-fields">
+        <div class="field"><label for="b-verb">Глагол</label><select id="b-verb" aria-label="Глагол"></select></div>
+        <div class="field" id="custom-wrap" hidden><label for="b-custom">Свой правильный глагол (латиницей)</label><input type="text" id="b-custom" aria-label="Свой правильный глагол" placeholder="например: visit, clean, stop" spellcheck="false"></div>
+        <div class="field"><label for="b-rest">Что ещё добавить (необязательно)</label><input type="text" id="b-rest" aria-label="Что ещё добавить" value="in a bank" placeholder="например: in a bank, every day, now" spellcheck="false">
+        </div>
+        <p class="note" id="rest-hint" hidden>В вопросе со словом не пишите то, о чём спрашиваете: Where do you work? (без in a bank).</p>
+      </fieldset>
+    </form>
   </div>
 
   <div class="flow" aria-label="Как выбрать время">
@@ -239,31 +324,6 @@ table.ref-t td .tr{color:var(--muted);display:block;font-size:13px}
     <div class="flow-step"><span class="kicker">Шаг 2 · Идёт процесс?</span><b>Да → Continuous</b><p>Действие идёт в конкретный момент: now, at 5 pm yesterday, this time tomorrow.</p></div>
     <div class="flow-step"><span class="kicker">Шаг 2 · Важен результат?</span><b>Да → Perfect</b><p>Уже сделано к какому-то моменту: already, just, by Monday, before.</p></div>
     <div class="flow-step"><span class="kicker">Шаг 2 · Ни то ни другое</span><b>Simple</b><p>Факт, привычка, расписание или просто событие: every day, yesterday, tomorrow.</p></div>
-  </div>
-
-  <div class="builder">
-    <form class="controls" id="b-form" autocomplete="off">
-      <fieldset class="step"><legend><span class="num">1</span>Когда это происходит?</legend><div class="opts wide-opts" id="g-time"></div></fieldset>
-      <fieldset class="step"><legend><span class="num">2</span>Что важно в действии?</legend><div class="opts wide-opts" id="g-aspect"></div></fieldset>
-      <fieldset class="step"><legend><span class="num">3</span>Какое предложение?</legend><div class="opts wide-opts" id="g-type"></div>
-        <div class="opts sub-opts" id="g-wh" hidden></div></fieldset>
-      <fieldset class="step"><legend><span class="num">4</span>Кто делает?</legend><div class="opts" id="g-subj"></div></fieldset>
-      <fieldset class="step"><legend><span class="num">5</span>Какое действие?</legend>
-        <div class="field"><label for="b-verb">Глагол</label><select id="b-verb"></select></div>
-        <div class="field" id="custom-wrap" hidden><label for="b-custom">Свой правильный глагол (латиницей)</label><input type="text" id="b-custom" placeholder="например: visit, clean, stop" spellcheck="false"></div>
-        <div class="field"><label for="b-rest">Что ещё добавить (необязательно)</label><input type="text" id="b-rest" value="in a bank" placeholder="например: in a bank, every day, now" spellcheck="false">
-          <p class="note" id="rest-hint" hidden>В вопросе со словом не пишите то, о чём спрашиваете: Where do you work? (без in a bank).</p></div>
-      </fieldset>
-    </form>
-
-    <div class="result" aria-live="polite">
-      <span class="kicker" id="r-name">Present Simple · вопрос</span>
-      <p class="sentence" id="r-sent"><span class="a">Does</span> <span class="s">he</span> <span class="v">work</span> <span class="x">in a bank?</span></p>
-      <div class="formula" id="r-formula">Does + S + V1 + …?</div>
-      <div class="r-extra" id="r-extra"></div>
-      <div class="meta"><span class="lbl">Почему так</span><ul class="rules" id="r-rules"></ul></div>
-      <a class="more" id="r-link" href="#present-simple">Подробнее про Present Simple →</a>
-    </div>
   </div>
 </section>
 
@@ -927,22 +987,28 @@ var EN = (function(){
       var lab = document.createElement('label'); lab.className = 'opt';
       var inp = document.createElement('input'); inp.type = 'radio'; inp.name = name; inp.value = it.v; inp.id = 'b-' + name + '-' + String(it.v).replace(/\s+/g, '-');
       if (String(it.v) === String(checked)) inp.checked = true;
-      var sp = document.createElement('span'); sp.textContent = it.label;
+      var sp = document.createElement('span');
+      if (it.short){
+        var lo = document.createElement('b'); lo.className = 't-long'; lo.textContent = it.label;
+        var sh = document.createElement('b'); sh.className = 't-short'; sh.textContent = it.short;
+        sp.appendChild(lo); sp.appendChild(sh);
+      } else sp.textContent = it.label;
       if (it.small){ var sm = document.createElement('small'); sm.textContent = it.small; sp.appendChild(sm); }
       lab.appendChild(inp); lab.appendChild(sp); box.appendChild(lab);
     });
   }
   group('g-time', 'time', [
-    {v:'past', label:'Прошлое', small:'Past'}, {v:'present', label:'Настоящее', small:'Present'}, {v:'future', label:'Будущее', small:'Future'}
+    {v:'past', label:'Прошлое', short:'Прошлое', small:'Past'}, {v:'present', label:'Настоящее', short:'Сейчас', small:'Present'}, {v:'future', label:'Будущее', short:'Будущее', small:'Future'}
   ], 'present');
   group('g-aspect', 'aspect', [
-    {v:'simple', label:'Факт, привычка', small:'Simple: просто происходит'},
-    {v:'continuous', label:'Процесс', small:'Continuous: идёт в момент'},
-    {v:'perfect', label:'Результат', small:'Perfect: уже сделано к моменту'}
+    {v:'simple', label:'Факт, привычка', short:'Факт', small:'Simple: просто происходит'},
+    {v:'continuous', label:'Процесс', short:'Процесс', small:'Continuous: идёт в момент'},
+    {v:'perfect', label:'Результат', short:'Результат', small:'Perfect: уже сделано к моменту'}
   ], 'simple');
   group('g-type', 'type', [
-    {v:'pos', label:'+ Утверждение'}, {v:'neg', label:'− Отрицание'}, {v:'q', label:'? Вопрос'}, {v:'wh', label:'Вопрос со словом'}
+    {v:'pos', label:'+ Утверждение', short:'+'}, {v:'neg', label:'− Отрицание', short:'−'}, {v:'q', label:'? Вопрос', short:'?'}, {v:'wh', label:'Вопрос со словом', short:'Wh?'}
   ], 'q');
+  try { if (window.matchMedia('(max-width: 600px)').matches) document.getElementById('r-why').open = false; } catch (e) {}
   group('g-wh', 'wh', [
     {v:'What', label:'What', small:'что?'}, {v:'Where', label:'Where', small:'где? куда?'}, {v:'When', label:'When', small:'когда?'},
     {v:'Why', label:'Why', small:'почему?'}, {v:'How', label:'How', small:'как?'}, {v:'How often', label:'How often', small:'как часто?'},
