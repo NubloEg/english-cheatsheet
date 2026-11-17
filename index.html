@@ -269,6 +269,57 @@ table.pron td:nth-child(2){color:var(--c-subj)}
 .pq .q-word i{font-style:normal;color:var(--muted);font-size:14px}
 .pq .q-gap{margin:0 2px}
 .pq .q-btns button{min-width:0;font-weight:600}
+
+/* tests */
+#t-picker{display:flex;flex-direction:column;gap:16px}
+.t-group{display:flex;flex-direction:column;gap:8px}
+.t-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:8px}
+@media (max-width:600px){.t-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.t-card{font:inherit;text-align:left;background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:12px 14px;cursor:pointer;color:var(--ink);display:flex;flex-direction:column;gap:2px;min-width:0}
+.t-card:hover{border-color:var(--accent)}
+.t-card b{font-weight:700;font-size:15px}
+.t-card > span{font-size:13px;color:var(--muted)}
+.t-card .best{color:var(--c-verb);font-weight:600}
+.player{background:var(--paper);border:2px solid var(--accent);border-radius:14px;padding:18px;display:flex;flex-direction:column;gap:14px;max-width:680px;width:100%;min-width:0;scroll-margin-top:calc(70px + env(safe-area-inset-top, 0px))}
+.t-head{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap}
+.t-back{font:inherit;font-size:14px;font-weight:600;color:var(--accent);background:none;border:0;padding:4px 0;cursor:pointer}
+.t-bar{height:6px;border-radius:3px;background:var(--accent-soft);overflow:hidden}
+.t-bar i{display:block;height:100%;background:var(--accent);transition:width .2s}
+@media (prefers-reduced-motion: reduce){.t-bar i{transition:none}}
+.t-q{font-size:20px;font-weight:600;line-height:1.45;margin:0;overflow-wrap:anywhere}
+.t-q .gap{display:inline-block;min-width:3em;padding:0 4px;border-bottom:2px solid var(--line);text-align:center;color:var(--c-aux)}
+.t-opts{display:flex;flex-direction:column;gap:8px}
+.t-opt,.t-main,.t-sec,.t-chip{font:inherit;cursor:pointer;color:var(--ink)}
+.t-opt{font-size:17px;font-weight:600;text-align:left;padding:12px 14px;border-radius:10px;border:1px solid var(--line);background:var(--bg)}
+.t-opt:hover:not(:disabled),.t-chip:hover:not(:disabled),.t-sec:hover{border-color:var(--accent)}
+.t-opt:disabled,.t-chip:disabled{cursor:default}
+.t-opt.ok{background:var(--c-verb-bg);border-color:var(--c-verb);color:var(--c-verb)}
+.t-opt.bad-pick{background:var(--c-not-bg);border-color:var(--c-not);color:var(--c-not)}
+.t-fb{border-radius:10px;padding:10px 12px;font-size:15px;display:flex;flex-direction:column;gap:4px}
+.t-fb.ok{background:var(--c-verb-bg)} .t-fb.ok b{color:var(--c-verb)}
+.t-fb.no{background:var(--c-not-bg)} .t-fb.no b{color:var(--c-not)}
+.t-actions{display:flex;gap:8px;flex-wrap:wrap}
+.t-main{font-weight:700;font-size:16px;padding:12px 20px;border-radius:10px;border:0;background:var(--accent);color:var(--paper)}
+.t-main:disabled{opacity:.4;cursor:default}
+.t-sec{font-weight:600;font-size:16px;padding:12px 18px;border-radius:10px;border:1px solid var(--line);background:var(--bg)}
+.t-card:focus-visible,.t-opt:focus-visible,.t-main:focus-visible,.t-sec:focus-visible,.t-chip:focus-visible,.t-back:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.t-built{min-height:54px;border:2px dashed var(--line);border-radius:10px;padding:8px;display:flex;flex-wrap:wrap;gap:6px;align-items:center}
+.t-built:empty::before{content:"Здесь появится предложение";color:var(--muted);font-size:14px}
+.t-built.ok{border-style:solid;border-color:var(--c-verb);background:var(--c-verb-bg)}
+.t-built.no{border-style:solid;border-color:var(--c-not);background:var(--c-not-bg)}
+.t-bank{display:flex;flex-wrap:wrap;gap:6px;min-height:44px}
+.t-chip{font-size:17px;font-weight:600;padding:8px 12px;border-radius:8px;border:1px solid var(--line);background:var(--bg)}
+.t-built .t-chip{background:var(--paper)}
+.t-res-score{font-family:var(--f-display);font-size:30px;font-weight:700;color:var(--accent)}
+.t-miss{margin:0;padding-left:18px;display:flex;flex-direction:column;gap:10px;font-size:15px}
+.t-miss s{color:var(--c-not);text-decoration-color:var(--c-not)}
+.t-miss .tr{display:block;color:var(--muted);font-size:13px}
+@media (max-width:600px){
+  .player{padding:14px;gap:12px}
+  .t-q{font-size:18px}
+  .t-opt{padding:11px 12px}
+  .t-main,.t-sec{flex:1 1 auto}
+}
 </style>
 
 <nav class="topbar" aria-label="Разделы">
@@ -279,6 +330,7 @@ table.pron td:nth-child(2){color:var(--c-subj)}
       <a href="#questions">Вопросы со словом</a>
       <a href="#articles">Артикли</a>
       <a href="#pronouns">Местоимения</a>
+      <a href="#tests">Тесты</a>
       <a href="#verbs">Формы глагола</a>
     </div>
   </div>
@@ -883,6 +935,16 @@ table.pron td:nth-child(2){color:var(--c-subj)}
   </div>
 </section>
 
+<!-- TESTS -->
+<section class="aspect" id="tests">
+  <div class="aspect-head">
+    <h2>Тесты</h2>
+    <p>Выберите тему. Вопросы и варианты каждый раз перемешиваются, после ответа видно объяснение. Лучший результат запоминается на этом устройстве.</p>
+  </div>
+  <div id="t-picker"></div>
+  <div class="player" id="t-player" hidden></div>
+</section>
+
 <!-- REFERENCE -->
 <section class="aspect" id="verbs">
   <div class="aspect-head"><h2>Формы глагола</h2></div>
@@ -1348,6 +1410,344 @@ var EN = (function(){
   }
   document.getElementById('pquiz-reset').addEventListener('click', build);
   build();
+})();
+</script>
+
+<script>
+var EN_TESTS = (function(){
+  // MC item: [question with ___, options, answer, why]
+  // order item: {w:[words], a:[accepted sentences], why}
+  function mc(list, link){ return list.map(function(x){ return {q:x[0], o:x[1], a:x[2], why:x[3], link:x[4] || link}; }); }
+  function ord(list){ return list.map(function(x){ return {w:x[0], a:x[1], why:x[2], link:x[3]}; }); }
+  var NA = '— без артикля';
+
+  var T = [];
+  T.push({id:'present-simple', group:'tenses', name:'Present Simple', items: mc([
+    ['She ___ in a bank.', ['work','works','is work'], 'works', 'he / she / it → глагол с -s'],
+    ['They ___ coffee in the morning.', ['drinks','drink','are drink'], 'drink', 'they → глагол без -s'],
+    ['___ your brother play football?', ['Do','Does','Is'], 'Does', 'вопрос с he / she / it → Does'],
+    ['I ___ like fish.', ["don't","doesn't",'not'], "don't", 'отрицание с I → don\'t + глагол'],
+    ['He ___ TV every evening.', ['watchs','watches','watching'], 'watches', 'после ch добавляется -es'],
+    ['Where ___ you live?', ['do','does','are'], 'do', 'вопрос с you → do'],
+    ["She doesn't ___ English.", ['speaks','speak','speaking'], 'speak', 'после doesn\'t глагол без -s'],
+    ['"Do you like tea?" — "Yes, I ___."', ['like','do','am'], 'do', 'краткий ответ повторяет вспомогательный глагол: do']
+  ], 'present-simple')});
+  T.push({id:'past-simple', group:'tenses', name:'Past Simple', items: mc([
+    ['We ___ to Paris last summer.', ['go','went','gone'], 'went', 'go — неправильный глагол, 2-я форма went'],
+    ['She ___ the film yesterday.', ['watched','watch','watches'], 'watched', 'yesterday → прошедшее, правильный глагол +ed'],
+    ['___ you call me last night?', ['Do','Did','Were'], 'Did', 'вопрос в Past Simple → Did'],
+    ["I didn't ___ him at the party.", ['saw','see','seen'], 'see', 'после didn\'t глагол в начальной форме'],
+    ['He ___ a new car two years ago.', ['buyed','bought','buys'], 'bought', 'buy — неправильный: buy – bought – bought'],
+    ['What did you ___ yesterday?', ['do','did','done'], 'do', 'did уже есть, поэтому глагол в начальной форме'],
+    ['They ___ on time. (не пришли)', ["didn't come","didn't came","don't come"], "didn't come", 'didn\'t + начальная форма: didn\'t come'],
+    ['"Did she call?" — "No, she ___."', ["didn't","doesn't","wasn't"], "didn't", 'краткий ответ: No, she didn\'t']
+  ], 'past-simple')});
+  T.push({id:'future-simple', group:'tenses', name:'Future Simple', items: mc([
+    ['I think it ___ rain tomorrow.', ['will','is','does'], 'will', 'прогноз о будущем: will'],
+    ['She will ___ you later.', ['calls','call','to call'], 'call', 'после will глагол в начальной форме, без to'],
+    ['___ you help me, please?', ['Do','Will','Are'], 'Will', 'просьба: Will you…?'],
+    ["I ___ tell anybody, I promise.", ["won't","don't","willn't"], "won't", 'will not = won\'t'],
+    ['They will ___ here next week.', ['be','are','is'], 'be', 'после will — be, а не are / is'],
+    ['"Will he come?" — "Yes, he ___."', ['will','does','comes'], 'will', 'краткий ответ: Yes, he will'],
+    ['The phone is ringing. I ___ answer it!', ['will','am','do'], 'will', 'решение в момент речи: I\'ll'],
+    ['Where ___ you go next summer?', ['will','do','did'], 'will', 'next summer → будущее'],
+  ], 'future-simple')});
+  T.push({id:'present-continuous', group:'tenses', name:'Present Continuous', items: mc([
+    ['Look! It ___ snowing.', ['is','are','does'], 'is', 'it → is'],
+    ['I ___ reading a book now.', ['is','am','are'], 'am', 'I → am'],
+    ['They ___ playing football at the moment.', ['is','are','am'], 'are', 'they → are'],
+    ['She is ___ dinner now.', ['cook','cooking','cooks'], 'cooking', 'после is — глагол с -ing'],
+    ['___ you listening to me?', ['Do','Are','Is'], 'Are', 'вопрос с you → Are'],
+    ["He ___ working today, he's at home.", ["isn't","doesn't","aren't"], "isn't", 'he → is not = isn\'t'],
+    ['We are ___ in the sea.', ['swiming','swimming','swim'], 'swimming', 'swim → swimming, согласная удваивается'],
+    ['What ___ she doing now?', ['is','does','are'], 'is', 'now → Continuous, she → is']
+  ], 'present-continuous')});
+  T.push({id:'past-continuous', group:'tenses', name:'Past Continuous', items: mc([
+    ['I ___ sleeping when you called.', ['was','were','did'], 'was', 'I → was'],
+    ['They ___ watching TV at 8 pm yesterday.', ['was','were','are'], 'were', 'they → were'],
+    ['She was ___ a book all evening.', ['read','reading','reads'], 'reading', 'после was — глагол с -ing'],
+    ['___ you working at 5 o\'clock yesterday?', ['Was','Were','Did'], 'Were', 'вопрос с you → Were'],
+    ["He ___ listening, so he didn't hear.", ["wasn't","weren't","didn't"], "wasn't", 'he → was not = wasn\'t'],
+    ['While we ___ dinner, the lights went out.', ['had','were having','are having'], 'were having', 'while + процесс в прошлом → were having'],
+    ['What ___ he doing at 10 last night?', ['was','were','did'], 'was', 'he → was'],
+    ['"Were they sleeping?" — "No, they ___."', ["weren't","wasn't","didn't"], "weren't", 'краткий ответ: No, they weren\'t']
+  ], 'past-continuous')});
+  T.push({id:'future-continuous', group:'tenses', name:'Future Continuous', items: mc([
+    ['This time tomorrow I ___ flying to Rome.', ['will','will be','am'], 'will be', 'процесс в момент в будущем → will be + -ing'],
+    ['At 8 pm she will be ___ dinner.', ['have','having','had'], 'having', 'после will be — глагол с -ing'],
+    ['___ you be working tomorrow at noon?', ['Will','Are','Do'], 'Will', 'вопрос: Will + you + be + -ing'],
+    ["They won't ___ sleeping at midnight.", ['be','are','being'], 'be', 'won\'t be + -ing'],
+    ["Don't call at 9, I ___ driving then.", ['will be','will','am be'], 'will be', 'в 9 будет идти процесс → will be driving'],
+    ['What will you be ___ at this time tomorrow?', ['do','doing','done'], 'doing', 'will be + -ing'],
+    ['He will be ___ all day tomorrow.', ['work','working','works'], 'working', 'will be + -ing'],
+    ['"Will you be using the car?" — "No, I ___."', ["won't","don't","willn't"], "won't", 'краткий ответ: No, I won\'t']
+  ], 'future-continuous')});
+  T.push({id:'present-perfect', group:'tenses', name:'Present Perfect', items: mc([
+    ['I ___ already finished my homework.', ['have','has','am'], 'have', 'I → have'],
+    ['She ___ been to London twice.', ['have','has','is'], 'has', 'she → has'],
+    ['They have ___ a new house.', ['buy','bought','buyed'], 'bought', 'have + 3-я форма: bought'],
+    ['___ you ever seen this film?', ['Did','Have','Has'], 'Have', 'ever + опыт → Have you…?'],
+    ["He hasn't ___ yet.", ['arrive','arrived','arriving'], 'arrived', 'hasn\'t + 3-я форма'],
+    ['We ___ known each other since 2015.', ['have','had','are'], 'have', 'since + до сих пор → have known'],
+    ['I have lived here ___ ten years.', ['since','for','ago'], 'for', 'for + отрезок времени, since + точка начала'],
+    ['"Have you eaten?" — "Yes, I ___."', ['have','did','ate'], 'have', 'краткий ответ: Yes, I have']
+  ], 'present-perfect')});
+  T.push({id:'past-perfect', group:'tenses', name:'Past Perfect', items: mc([
+    ['When we arrived, the film ___ already started.', ['has','had','was'], 'had', 'раньше другого действия в прошлом → had'],
+    ['She had ___ before I came.', ['leave','left','leaves'], 'left', 'had + 3-я форма: left'],
+    ['I ___ never seen the sea before that trip.', ['had','have','was'], 'had', 'до момента в прошлом → had seen'],
+    ['___ they finished by the time you came?', ['Have','Had','Did'], 'Had', 'вопрос: Had + they + V3'],
+    ["He hadn't ___ breakfast, so he was hungry.", ['eat','ate','eaten'], 'eaten', 'eat – ate – eaten'],
+    ['By 5 pm yesterday I ___ done all the work.', ['had','have','was'], 'had', 'by + время в прошлом → had done'],
+    ['After she ___ the letter, she went out.', ['had written','has written','writes'], 'had written', 'сначала написала, потом ушла → had written'],
+    ['"Had you met him before?" — "No, I ___."', ["hadn't","didn't","haven't"], "hadn't", 'краткий ответ: No, I hadn\'t']
+  ], 'past-perfect')});
+  T.push({id:'future-perfect', group:'tenses', name:'Future Perfect', items: mc([
+    ['By Monday I ___ finished the report.', ['will have','will','have'], 'will have', 'by + момент в будущем → will have + V3'],
+    ['She will have ___ by 6 pm.', ['leave','left','leaving'], 'left', 'will have + 3-я форма'],
+    ['___ you have done it by tomorrow?', ['Will','Have','Do'], 'Will', 'вопрос: Will + you + have + V3'],
+    ["They won't have ___ by then.", ['arrive','arrived','arriving'], 'arrived', 'won\'t have + V3'],
+    ['By 2030 we ___ lived here for 20 years.', ['will have','will','have'], 'will have', 'by 2030 → will have lived'],
+    ['By the time you come, I will ___ cooked dinner.', ['has','have','had'], 'have', 'после will всегда have, не has'],
+    ['How many books will you have ___ by the summer?', ['read','reading','readed'], 'read', 'read – read – read'],
+    ['"Will he have finished by noon?" — "Yes, he ___."', ['will','has','will have'], 'will', 'краткий ответ: Yes, he will']
+  ], 'future-perfect')});
+
+  T.push({id:'which-tense', group:'topics', name:'Какое время?', items: mc([
+    ['Listen! The baby ___.', ['cries','is crying','cried'], 'is crying', 'Listen! — прямо сейчас → Present Continuous', 'present-continuous'],
+    ['I ___ to the gym every Monday.', ['go','am going','went'], 'go', 'every Monday — привычка → Present Simple', 'present-simple'],
+    ["She ___ her keys, so she can't open the door.", ['lost','has lost','loses'], 'has lost', 'важен результат сейчас → Present Perfect', 'present-perfect'],
+    ['We ___ to Italy in 2019.', ['have been','went','go'], 'went', 'указан год в прошлом → Past Simple', 'past-simple'],
+    ['At 7 pm yesterday I ___ dinner.', ['cooked','was cooking','cook'], 'was cooking', 'процесс в момент в прошлом → Past Continuous', 'past-continuous'],
+    ["Don't worry, I ___ you tomorrow.", ['call','will call','called'], 'will call', 'обещание на завтра → Future Simple', 'future-simple'],
+    ['When I came home, my sister ___ already gone to bed.', ['has','had','was'], 'had', 'раньше другого действия в прошлом → Past Perfect', 'past-perfect'],
+    ['Water ___ at 100 degrees.', ['boils','is boiling','boiled'], 'boils', 'общеизвестный факт → Present Simple', 'present-simple'],
+    ['I ___ sushi. (никогда не пробовал)', ['have never tried','am never trying','never try'], 'have never tried', 'опыт за всю жизнь → Present Perfect', 'present-perfect'],
+    ['This time next week we ___ on the beach.', ['will lie','will be lying','lie'], 'will be lying', 'процесс в момент в будущем → Future Continuous', 'future-continuous']
+  ])});
+  T.push({id:'articles', group:'topics', name:'Артикли', items: mc([
+    ['I saw ___ elephant at the zoo.', ['a','an','the'], 'an', 'elephant начинается с гласного звука → an'],
+    ['She is ___ doctor.', ['a','an',NA], 'a', 'профессия → a / an'],
+    ['___ sun is very bright today.', ['A','The',NA], 'The', 'единственный в своём роде → the'],
+    ['I like ___ music.', ['the','a',NA], NA, 'в общем смысле артикль не нужен'],
+    ['He plays ___ guitar.', ['a','the',NA], 'the', 'музыкальные инструменты → the'],
+    ['We had ___ breakfast at 8.', ['a','the',NA], NA, 'приёмы пищи без артикля'],
+    ['I waited for ___ hour.', ['a','an','the'], 'an', 'h не читается, звук «а» → an'],
+    ['She studies at ___ university.', ['a','an',NA], 'a', 'university звучит «юни…», согласный звук → a'],
+    ['This is ___ best day of my life.', ['a','the',NA], 'the', 'превосходная степень → the'],
+    ['I saw a dog. ___ dog was black.', ['A','The',NA], 'The', 'собака уже упоминалась → the']
+  ], 'articles')});
+  T.push({id:'pronouns', group:'topics', name:'Местоимения', items: mc([
+    ['___ is my sister.', ['She','Her','Hers'], 'She', 'подлежащее → she'],
+    ['I gave ___ the book. (ему)', ['he','him','his'], 'him', 'кому? → объектная форма him'],
+    ['Is this bag ___? (твоя)', ['your','yours','you'], 'yours', 'без существительного → yours'],
+    ['We did it ___. (сами)', ['ourselves','us','ourself'], 'ourselves', 'мы сами → ourselves'],
+    ['___ cat is very old. (их)', ['They','Their','Theirs'], 'Their', 'перед существительным → their'],
+    ['Can you see ___ cars over there?', ['these','those','this'], 'those', 'далеко и много → those'],
+    ['Is there ___ milk in the fridge?', ['some','any','no'], 'any', 'в вопросе → any'],
+    ['There is ___ in the room. (никого)', ['nobody','anybody','somebody'], 'nobody', 'в утверждении без not → nobody'],
+    ['The dog is eating ___ food.', ['its',"it's",'it'], 'its', "its — чей; it's = it is"],
+    ['___ my friends came to the party. (все)', ['All','Every','Each'], 'All', 'все + мн. ч. → all']
+  ], 'pronouns')});
+  T.push({id:'order', group:'topics', name:'Собери предложение', items: ord([
+    [['she','does','where','work'], ['Where does she work?'], 'Wh-слово + does + подлежащее + глагол', 'questions'],
+    [['like',"don't",'I','coffee'], ["I don't like coffee."], 'подлежащее + don\'t + глагол + остальное', 'present-simple'],
+    [['are','you','what','doing'], ['What are you doing?'], 'Wh-слово + are + you + глагол с -ing', 'present-continuous'],
+    [['went','yesterday','we','home'], ['We went home yesterday.','Yesterday we went home.'], 'подлежащее + глагол + куда + когда', 'past-simple'],
+    [['he','has','finished','already'], ['He has already finished.','He has finished already.'], 'already ставится между has и глаголом', 'present-perfect'],
+    [['did','call','you','when','me'], ['When did you call me?'], 'Wh-слово + did + подлежащее + глагол + остальное', 'past-simple'],
+    [['never','she','late','is'], ['She is never late.'], 'never ставится после is, но перед обычным глаголом', 'present-simple'],
+    [['will','help','I','you','tomorrow'], ['I will help you tomorrow.','Tomorrow I will help you.'], 'подлежащее + will + глагол + кому + когда', 'future-simple']
+  ])});
+
+  return T;
+})();
+(function(){
+  var root = document.getElementById('tests');
+  if (!root || typeof EN_TESTS === 'undefined') return;
+  var picker = document.getElementById('t-picker'), player = document.getElementById('t-player');
+  var TESTS = EN_TESTS.slice();
+  var ALL = [];
+  TESTS.forEach(function(t){ t.items.forEach(function(it){ ALL.push(it); }); });
+  TESTS.push({id:'mixed', group:'mixed', name:'Смешанный тест', items:null, size:15});
+  var GROUPS = [['tenses','Времена'], ['topics','Темы'], ['mixed','Всё вместе']];
+  var KEY = 'en-tests-best';
+
+  function loadBest(){ try { return JSON.parse(localStorage.getItem(KEY)) || {}; } catch (e) { return {}; } }
+  function saveBest(id, c, n){
+    var b = loadBest();
+    if (!b[id] || c > b[id][0]) { b[id] = [c, n]; try { localStorage.setItem(KEY, JSON.stringify(b)); } catch (e) {} }
+  }
+  function shuffle(a){ for (var i = a.length - 1; i > 0; i--){ var j = Math.floor(Math.random() * (i + 1)); var x = a[i]; a[i] = a[j]; a[j] = x; } return a; }
+  function el(tag, cls, text){ var e = document.createElement(tag); if (cls) e.className = cls; if (text != null) e.textContent = text; return e; }
+  function norm(s){ return s.toLowerCase().replace(/[.?!,]/g, '').replace(/\s+/g, ' ').trim(); }
+  function shown(a){ return a.charAt(0) === '—' ? '—' : a; }
+
+  function renderPicker(){
+    var best = loadBest();
+    picker.innerHTML = '';
+    GROUPS.forEach(function(g){
+      var wrap = el('div', 't-group');
+      wrap.appendChild(el('span', 'kicker', g[1]));
+      var grid = el('div', 't-grid');
+      TESTS.filter(function(t){ return t.group === g[0]; }).forEach(function(t){
+        var n = t.items ? t.items.length : t.size;
+        var b = el('button', 't-card'); b.type = 'button'; b.id = 't-start-' + t.id;
+        b.appendChild(el('b', null, t.name));
+        var meta = el('span', null, n + ' вопросов');
+        if (best[t.id]){ var bs = el('span', 'best', ' · лучший ' + best[t.id][0] + '/' + best[t.id][1]); meta.appendChild(bs); }
+        b.appendChild(meta);
+        b.addEventListener('click', function(){ start(t); });
+        grid.appendChild(b);
+      });
+      wrap.appendChild(grid);
+      picker.appendChild(wrap);
+    });
+  }
+
+  var S = null;
+  function start(t){
+    var qs = t.items ? shuffle(t.items.slice()) : shuffle(ALL.slice()).slice(0, t.size);
+    S = {t:t, qs:qs, i:0, correct:0, miss:[]};
+    picker.hidden = true; player.hidden = false;
+    renderQ();
+    try { player.scrollIntoView({block:'start'}); } catch (e) { player.scrollIntoView(); }
+  }
+  function toList(){
+    S = null; player.hidden = true; picker.hidden = false; renderPicker();
+    try { root.scrollIntoView({block:'start'}); } catch (e) {}
+  }
+
+  function head(){
+    var h = el('div', 't-head');
+    var back = el('button', 't-back', '← Все тесты'); back.type = 'button'; back.addEventListener('click', toList);
+    h.appendChild(back);
+    h.appendChild(el('span', 'kicker', S.t.name + ' · ' + (S.i + 1) + ' из ' + S.qs.length));
+    player.appendChild(h);
+    var bar = el('div', 't-bar'), fill = el('i'); fill.style.width = (S.i / S.qs.length * 100) + '%';
+    bar.appendChild(fill); player.appendChild(bar);
+  }
+
+  function feedback(ok, right, q){
+    var fb = el('div', 't-fb ' + (ok ? 'ok' : 'no')); fb.setAttribute('aria-live', 'polite');
+    fb.appendChild(el('b', null, ok ? 'Верно!' : 'Правильно: ' + right));
+    fb.appendChild(el('span', null, q.why.charAt(0).toUpperCase() + q.why.slice(1) + '.'));
+    var a = el('a', 'more', 'Повторить правило →'); a.href = '#' + q.link; fb.appendChild(a);
+    player.appendChild(fb);
+    var acts = el('div', 't-actions');
+    var last = S.i === S.qs.length - 1;
+    var nx = el('button', 't-main', last ? 'Результат' : 'Дальше →'); nx.type = 'button'; nx.id = 't-next';
+    nx.addEventListener('click', function(){ S.i++; if (S.i < S.qs.length) renderQ(); else renderResult(); });
+    acts.appendChild(nx); player.appendChild(acts);
+    nx.focus({preventScroll:true});
+  }
+
+  function record(ok, q, given, right){
+    if (ok) S.correct++;
+    else S.miss.push({q:q, given:given, right:right});
+  }
+
+  function renderQ(){
+    player.innerHTML = '';
+    head();
+    var q = S.qs[S.i];
+    if (q.o){
+      var p = el('p', 't-q'), parts = q.q.split('___');
+      p.appendChild(document.createTextNode(parts[0]));
+      var gap = el('span', 'gap', '…'); p.appendChild(gap);
+      p.appendChild(document.createTextNode(parts[1]));
+      player.appendChild(p);
+      var opts = el('div', 't-opts');
+      shuffle(q.o.slice()).forEach(function(o){
+        var b = el('button', 't-opt', o); b.type = 'button';
+        b.addEventListener('click', function(){
+          var ok = o === q.a;
+          gap.textContent = shown(q.a);
+          opts.querySelectorAll('button').forEach(function(x){
+            x.disabled = true;
+            if (x.textContent === q.a) x.classList.add('ok');
+            else if (x === b) x.classList.add('bad-pick');
+          });
+          record(ok, q, o, q.a);
+          feedback(ok, q.a, q);
+        });
+        opts.appendChild(b);
+      });
+      player.appendChild(opts);
+    } else {
+      player.appendChild(el('p', 't-q', 'Соберите предложение: нажимайте слова по порядку.'));
+      var built = el('div', 't-built'), bank = el('div', 't-bank');
+      var acts = el('div', 't-actions');
+      var check = el('button', 't-main', 'Проверить'); check.type = 'button'; check.disabled = true;
+      var reset = el('button', 't-sec', 'Сбросить'); reset.type = 'button';
+      function sync(){ check.disabled = bank.children.length > 0; }
+      shuffle(q.w.slice()).forEach(function(w){
+        var c = el('button', 't-chip', w); c.type = 'button';
+        c.addEventListener('click', function(){
+          if (c.disabled) return;
+          (c.parentNode === bank ? built : bank).appendChild(c); sync();
+        });
+        bank.appendChild(c);
+      });
+      reset.addEventListener('click', function(){
+        Array.prototype.slice.call(built.children).forEach(function(c){ bank.appendChild(c); }); sync();
+      });
+      check.addEventListener('click', function(){
+        var words = Array.prototype.map.call(built.children, function(c){ return c.textContent; });
+        var said = words.join(' ');
+        var ok = q.a.some(function(a){ return norm(a) === norm(said); });
+        built.querySelectorAll('button').forEach(function(c){ c.disabled = true; });
+        built.classList.add(ok ? 'ok' : 'no');
+        acts.remove();
+        var given = said.charAt(0).toUpperCase() + said.slice(1);
+        record(ok, q, given, q.a[0]);
+        feedback(ok, q.a[0], q);
+      });
+      player.appendChild(built); player.appendChild(bank);
+      acts.appendChild(check); acts.appendChild(reset);
+      player.appendChild(acts);
+    }
+  }
+
+  function renderResult(){
+    player.innerHTML = '';
+    var n = S.qs.length, c = S.correct;
+    saveBest(S.t.id, c, n);
+    var h = el('div', 't-head');
+    var back = el('button', 't-back', '← Все тесты'); back.type = 'button'; back.addEventListener('click', toList);
+    h.appendChild(back); h.appendChild(el('span', 'kicker', S.t.name + ' · результат'));
+    player.appendChild(h);
+    var bar = el('div', 't-bar'), fill = el('i'); fill.style.width = '100%'; bar.appendChild(fill); player.appendChild(bar);
+    player.appendChild(el('div', 't-res-score', c + ' из ' + n));
+    var r = c / n;
+    player.appendChild(el('p', null, r === 1 ? 'Отлично, без ошибок!' : r >= 0.75 ? 'Хорошо! Посмотрите ошибки ниже.' : 'Стоит повторить правило и пройти ещё раз.'));
+    if (S.miss.length){
+      player.appendChild(el('span', 'kicker', 'Ошибки'));
+      var ul = el('ul', 't-miss');
+      S.miss.forEach(function(m){
+        var li = el('li');
+        if (m.q.o){
+          var parts = m.q.q.split('___');
+          li.appendChild(document.createTextNode(parts[0]));
+          li.appendChild(el('b', null, shown(m.right)));
+          li.appendChild(document.createTextNode(parts[1] + ' '));
+        } else {
+          li.appendChild(el('b', null, m.right + ' '));
+        }
+        li.appendChild(el('s', null, m.given));
+        var why = el('span', 'tr', m.q.why + '. '); var a = el('a', 'more', 'Правило →'); a.href = '#' + m.q.link; why.appendChild(a);
+        li.appendChild(why);
+        ul.appendChild(li);
+      });
+      player.appendChild(ul);
+    }
+    var acts = el('div', 't-actions');
+    var again = el('button', 't-main', 'Пройти ещё раз'); again.type = 'button'; again.addEventListener('click', function(){ start(S.t); });
+    var list = el('button', 't-sec', 'Все тесты'); list.type = 'button'; list.addEventListener('click', toList);
+    acts.appendChild(again); acts.appendChild(list); player.appendChild(acts);
+  }
+
+  renderPicker();
 })();
 </script>
 
