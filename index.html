@@ -255,6 +255,20 @@ table.ref-t td .tr{color:var(--muted);display:block;font-size:13px}
 .q-fb{grid-column:1 / -1;font-size:13px;color:var(--muted)}
 .q-fb.ok{color:var(--c-verb)} .q-fb.no{color:var(--c-not)}
 .quiz-foot{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;padding-top:10px;border-top:1px solid var(--line);font-weight:600}
+
+/* pronouns */
+table.pron{border-collapse:collapse;width:100%;min-width:620px;font-size:15px}
+table.pron th{text-align:left;vertical-align:bottom;font-size:12px;letter-spacing:.04em;color:var(--muted);padding:6px 8px;border-bottom:1px solid var(--line);font-weight:600}
+table.pron th small{display:block;text-transform:none;letter-spacing:0;font-weight:400}
+table.pron td{padding:7px 8px;border-bottom:1px solid var(--line);font-weight:600}
+table.pron td:first-child{color:var(--muted);font-weight:400;white-space:nowrap}
+table.pron tr.sep td{border-bottom:2px solid var(--line)}
+table.pron td:nth-child(2){color:var(--c-subj)}
+.pq .q-row{grid-template-columns:minmax(0,1fr)}
+.pq .q-word{font-weight:500;line-height:1.6}
+.pq .q-word i{font-style:normal;color:var(--muted);font-size:14px}
+.pq .q-gap{margin:0 2px}
+.pq .q-btns button{min-width:0;font-weight:600}
 </style>
 
 <nav class="topbar" aria-label="Разделы">
@@ -264,6 +278,7 @@ table.ref-t td .tr{color:var(--muted);display:block;font-size:13px}
       <a href="#tenses">Времена</a>
       <a href="#questions">Вопросы со словом</a>
       <a href="#articles">Артикли</a>
+      <a href="#pronouns">Местоимения</a>
       <a href="#verbs">Формы глагола</a>
     </div>
   </div>
@@ -738,6 +753,136 @@ table.ref-t td .tr{color:var(--muted);display:block;font-size:13px}
   </div>
 </section>
 
+<!-- PRONOUNS -->
+<section class="aspect" id="pronouns">
+  <div class="aspect-head">
+    <h2>Местоимения</h2>
+    <p>У каждого лица в английском пять форм. Какую взять, зависит от того, какое место слово занимает в предложении.</p>
+  </div>
+  <div class="duo">
+    <div class="box wide">
+      <h3>Личные, притяжательные и возвратные</h3>
+      <div class="tbl-scroll">
+      <table class="pron">
+        <thead><tr>
+          <th></th>
+          <th>Кто?<small>подлежащее</small></th>
+          <th>Кого? Кому?<small>объект</small></th>
+          <th>Чей? + сущ.<small>притяжательное</small></th>
+          <th>Чей? без сущ.<small>притяжательное</small></th>
+          <th>Сам, себя<small>возвратное</small></th>
+        </tr></thead>
+        <tbody>
+          <tr><td>я</td><td>I</td><td>me</td><td>my</td><td>mine</td><td>myself</td></tr>
+          <tr><td>ты</td><td>you</td><td>you</td><td>your</td><td>yours</td><td>yourself</td></tr>
+          <tr><td>он</td><td>he</td><td>him</td><td>his</td><td>his</td><td>himself</td></tr>
+          <tr><td>она</td><td>she</td><td>her</td><td>her</td><td>hers</td><td>herself</td></tr>
+          <tr class="sep"><td>оно, это</td><td>it</td><td>it</td><td>its</td><td>—</td><td>itself</td></tr>
+          <tr><td>мы</td><td>we</td><td>us</td><td>our</td><td>ours</td><td>ourselves</td></tr>
+          <tr><td>вы</td><td>you</td><td>you</td><td>your</td><td>yours</td><td>yourselves</td></tr>
+          <tr><td>они</td><td>they</td><td>them</td><td>their</td><td>theirs</td><td>themselves</td></tr>
+        </tbody>
+      </table>
+      </div>
+
+      <h3>Где какая форма</h3>
+      <div class="tbl-scroll">
+      <table class="ref-t">
+        <tbody>
+          <tr><td>Кто?</td><td>Перед глаголом, тот, кто делает.<span class="tr"><b>She</b> works here. <b>We</b> are late.</span></td></tr>
+          <tr><td>Кого? Кому?</td><td>После глагола или предлога.<span class="tr">I love <b>her</b>. Look at <b>me</b>. Come with <b>us</b>.</span></td></tr>
+          <tr><td>Чей? + сущ.</td><td>Перед существительным.<span class="tr"><b>my</b> phone, <b>her</b> bag, <b>our</b> house</span></td></tr>
+          <tr><td>Чей? без сущ.</td><td>Вместо существительного, отдельно.<span class="tr">The bag is <b>hers</b>. Is this pen <b>yours</b>?</span></td></tr>
+          <tr><td>Сам, себя</td><td>Действие на себя или «сам, без помощи».<span class="tr">I cut <b>myself</b>. She did it <b>herself</b>.</span></td></tr>
+        </tbody>
+      </table>
+      </div>
+      <p class="note">Русского «свой» в английском нет. Берём притяжательное нужного лица: Я люблю свою маму → I love <b>my</b> mum. Она любит свою маму → She loves <b>her</b> mum.</p>
+    </div>
+
+    <div class="box">
+      <h3>This, that, these, those</h3>
+      <div class="tbl-scroll">
+      <table class="ref-t">
+        <thead><tr><th></th><th>Один</th><th>Много</th></tr></thead>
+        <tbody>
+          <tr><td>Близко</td><td><b>this</b> — этот<span class="tr">this book</span></td><td><b>these</b> — эти<span class="tr">these books</span></td></tr>
+          <tr><td>Далеко</td><td><b>that</b> — тот<span class="tr">that house</span></td><td><b>those</b> — те<span class="tr">those houses</span></td></tr>
+        </tbody>
+      </table>
+      </div>
+      <ul>
+        <li>Знакомство и телефон: <b>This is</b> Anna. Hello, <b>this is</b> Max.</li>
+        <li>Про только что сказанное: <b>That's</b> right! <b>That's</b> a good idea.</li>
+        <li>Чтобы не повторять слово: I like <b>this one</b>, not <b>that one</b>.</li>
+      </ul>
+    </div>
+
+    <div class="box">
+      <h3>Some, any, no, every</h3>
+      <div class="tbl-scroll">
+      <table class="ref-t">
+        <thead><tr><th></th><th>-body / -one</th><th>-thing</th><th>-where</th></tr></thead>
+        <tbody>
+          <tr><td>some-</td><td>somebody<span class="tr">кто-то</span></td><td>something<span class="tr">что-то</span></td><td>somewhere<span class="tr">где-то</span></td></tr>
+          <tr><td>any-</td><td>anybody<span class="tr">кто-нибудь</span></td><td>anything<span class="tr">что-нибудь</span></td><td>anywhere<span class="tr">где-нибудь</span></td></tr>
+          <tr><td>no-</td><td>nobody<span class="tr">никто</span></td><td>nothing<span class="tr">ничего</span></td><td>nowhere<span class="tr">нигде</span></td></tr>
+          <tr><td>every-</td><td>everybody<span class="tr">все</span></td><td>everything<span class="tr">всё</span></td><td>everywhere<span class="tr">везде</span></td></tr>
+        </tbody>
+      </table>
+      </div>
+      <ul>
+        <li><b>some</b> в утверждении, а ещё в предложениях и просьбах: Would you like <b>some</b> tea?</li>
+        <li><b>any</b> в вопросе и в отрицании с not: Do you have <b>any</b> questions? I don't know <b>anybody</b>.</li>
+        <li><b>no</b> = not + any, второе отрицание не нужно: I have <b>no</b> money = I don't have <b>any</b> money.</li>
+        <li>После everybody / nobody глагол как после he: Everybody <b>knows</b>.</li>
+      </ul>
+    </div>
+
+    <div class="box wide">
+      <h3>Другие частые слова</h3>
+      <div class="tbl-scroll">
+      <table class="ref-t">
+        <thead><tr><th>Слово</th><th>Значение</th><th>Пример</th></tr></thead>
+        <tbody>
+          <tr><td>each</td><td>каждый (по отдельности)</td><td><b>Each</b> student has a book.<span class="tr">У каждого студента есть книга.</span></td></tr>
+          <tr><td>every</td><td>каждый (все, всегда)</td><td>I run <b>every</b> day.<span class="tr">Я бегаю каждый день.</span></td></tr>
+          <tr><td>all</td><td>все, весь</td><td><b>All</b> my friends came.<span class="tr">Пришли все мои друзья.</span></td></tr>
+          <tr><td>both</td><td>оба, обе</td><td><b>Both</b> answers are correct.<span class="tr">Оба ответа верные.</span></td></tr>
+          <tr><td>either / neither</td><td>любой из двух / ни один из двух</td><td><b>Neither</b> answer is correct.<span class="tr">Ни один из двух ответов не верен.</span></td></tr>
+          <tr><td>another</td><td>ещё один, другой (один)</td><td>Can I have <b>another</b> cup?<span class="tr">Можно ещё одну чашку?</span></td></tr>
+          <tr><td>other / others</td><td>другие</td><td><b>Other</b> people think so. Some like it, <b>others</b> don't.<span class="tr">Другие люди так думают. Одним нравится, другим нет.</span></td></tr>
+          <tr><td>the other</td><td>другой из двух, оставшийся</td><td>One hand is cold, <b>the other</b> is warm.<span class="tr">Одна рука холодная, другая тёплая.</span></td></tr>
+          <tr><td>one / ones</td><td>заменяет существительное</td><td>I like the red <b>one</b>. The new <b>ones</b> are better.<span class="tr">Мне нравится красный. Новые лучше.</span></td></tr>
+          <tr><td>each other</td><td>друг друга</td><td>They love <b>each other</b>.<span class="tr">Они любят друг друга.</span></td></tr>
+        </tbody>
+      </table>
+      </div>
+    </div>
+
+    <div class="box wide">
+      <h3>Частые ошибки</h3>
+      <div class="compare">
+        <div class="row"><span class="bad"><s>Me and my friend went home.</s></span><span class="good">My friend and <b>I</b> went home. — Подлежащее, и себя называем последним.</span></div>
+        <div class="row"><span class="bad"><s>He gave it to I.</s></span><span class="good">He gave it to <b>me</b>. — После предлога объектная форма.</span></div>
+        <div class="row"><span class="bad"><s>This is mine book.</s></span><span class="good">This is <b>my</b> book. / This book is <b>mine</b>.</span></div>
+        <div class="row"><span class="bad"><s>The dog wagged it's tail.</s></span><span class="good">The dog wagged <b>its</b> tail. — it's = it is.</span></div>
+        <div class="row"><span class="bad"><s>Your welcome!</s></span><span class="good"><b>You're</b> welcome! — you're = you are.</span></div>
+        <div class="row"><span class="bad"><s>Their is a cat.</s></span><span class="good"><b>There</b> is a cat. — their = их, they're = they are.</span></div>
+        <div class="row"><span class="bad"><s>a friend of me</s></span><span class="good">a friend of <b>mine</b> — мой друг (один из)</span></div>
+        <div class="row"><span class="bad"><s>I didn't see nobody.</s></span><span class="good">I didn't see <b>anybody</b>. / I saw <b>nobody</b>.</span></div>
+      </div>
+    </div>
+
+    <div class="box wide">
+      <h3>Тренажёр</h3>
+      <p class="note">Выберите подходящее слово. В скобках подсказка, что нужно сказать.</p>
+      <div class="quiz pq" id="pquiz"></div>
+      <div class="quiz-foot"><span id="pquiz-score">Отвечено 0 из 12</span><button type="button" class="q-reset" id="pquiz-reset">Ещё раз</button></div>
+    </div>
+  </div>
+</section>
+
 <!-- REFERENCE -->
 <section class="aspect" id="verbs">
   <div class="aspect-head"><h2>Формы глагола</h2></div>
@@ -1137,6 +1282,71 @@ var EN = (function(){
     upd();
   }
   document.getElementById('quiz-reset').addEventListener('click', build);
+  build();
+})();
+</script>
+
+<script>
+(function(){
+  var box = document.getElementById('pquiz');
+  if (!box) return;
+  // [before gap, after gap, Russian hint, options, answer, why]
+  var ITEMS = [
+    ['This is', 'book.', 'моя', ['me','my','mine'], 'my', 'перед существительным: my'],
+    ['The book is', '.', 'моя', ['my','mine','me'], 'mine', 'без существительного: mine'],
+    ['Can you help', '?', 'мне', ['I','me','my'], 'me', 'после глагола объектная форма: me'],
+    ['My friend and', 'went to the cinema.', 'я', ['me','I','myself'], 'I', 'это подлежащее, поэтому I'],
+    ['She loves', 'mum.', 'свою', ['her','his','its'], 'her', '«свой» у she — her'],
+    ['The cat is eating', 'food.', 'свою', ["it's",'its','it'], 'its', "its — чей; it's = it is"],
+    ['Is this pen', '?', 'твоя', ['your','yours','you'], 'yours', 'без существительного: yours'],
+    ['They built the house', '.', 'сами', ['themselves','them','their'], 'themselves', 'они сами: themselves'],
+    ['', 'is a shop near my house.', 'там есть', ['Their','There',"They're"], 'There', 'there is — есть, находится'],
+    ["I didn't see", '.', 'никого', ['nobody','anybody','somebody'], 'anybody', 'уже есть not, поэтому any-'],
+    ['Would you like', 'tea?', 'немного', ['some','any','no'], 'some', 'в предложении и просьбе: some'],
+    ['Look at', 'birds in the sky!', 'вон те', ['these','those','this'], 'those', 'далеко и много: those']
+  ];
+  var answered = 0, correct = 0;
+  var score = document.getElementById('pquiz-score');
+  function upd(){
+    score.textContent = answered < ITEMS.length
+      ? 'Отвечено ' + answered + ' из ' + ITEMS.length + (answered ? ', верно ' + correct : '')
+      : 'Готово: верно ' + correct + ' из ' + ITEMS.length + (correct === ITEMS.length ? '. Отлично!' : '. Посмотрите подсказки у ошибок.');
+  }
+  function build(){
+    box.innerHTML = ''; answered = 0; correct = 0;
+    ITEMS.forEach(function(it, i){
+      var row = document.createElement('div'); row.className = 'q-row';
+      var w = document.createElement('div'); w.className = 'q-word';
+      if (it[0]) w.appendChild(document.createTextNode(it[0] + ' '));
+      var gap = document.createElement('span'); gap.className = 'q-gap'; gap.textContent = '…';
+      w.appendChild(gap);
+      w.appendChild(document.createTextNode((/^[.?!]/.test(it[1]) ? '' : ' ') + it[1] + ' '));
+      var hint = document.createElement('i'); hint.textContent = '(' + it[2] + ')'; w.appendChild(hint);
+      var btns = document.createElement('div'); btns.className = 'q-btns';
+      var fb = document.createElement('div'); fb.className = 'q-fb'; fb.setAttribute('aria-live', 'polite');
+      it[3].forEach(function(ch, j){
+        var b = document.createElement('button'); b.type = 'button'; b.textContent = ch; b.id = 'pq' + i + '-' + j;
+        b.addEventListener('click', function(){
+          var good = ch === it[4];
+          answered++; if (good) correct++;
+          gap.textContent = it[4];
+          btns.querySelectorAll('button').forEach(function(x){
+            x.disabled = true;
+            if (x.textContent === it[4]) x.className = 'ok';
+            else if (x === b) x.className = 'bad-pick';
+          });
+          fb.className = 'q-fb ' + (good ? 'ok' : 'no');
+          fb.textContent = (good ? 'Верно: ' : 'Нужно ' + it[4] + ': ') + it[5] + '.';
+          upd();
+        });
+        btns.appendChild(b);
+      });
+      row.appendChild(w); row.appendChild(btns); row.appendChild(fb);
+      box.appendChild(row);
+    });
+    upd();
+  }
+  document.getElementById('pquiz-reset').addEventListener('click', build);
   build();
 })();
 </script>
